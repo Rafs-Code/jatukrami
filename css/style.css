@@ -1,0 +1,11 @@
+/* ==========================================================
+   STYLE (MASTER) — JATUKRAMI
+   Mengimpor seluruh file CSS sesuai urutan.
+   tokens.css WAJIB pertama, responsive.css WAJIB terakhir.
+   ========================================================== */
+@import url('tokens.css');     /* WAJIB pertama — design tokens */
+@import url('base.css');       /* reset & typography defaults */
+@import url('opening.css');    /* Section 1: amplop interaktif */
+@import url('intro.css');      /* Section 2: introduction (3 bg responsive) */
+@import url('sections.css');   /* Section 3-9 */
+@import url('responsive.css'); /* WAJIB terakhir — media queries tambahan */
