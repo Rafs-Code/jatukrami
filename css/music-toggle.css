@@ -1,0 +1,105 @@
+/* ==========================================================
+   MUSIC TOGGLE — JATUKRAMI
+   Floating fixed button bottom-right, persist di semua section.
+   WAJIB pakai var(--token) dari tokens.css.
+   ========================================================== */
+
+.music-toggle {
+  position: fixed;
+  bottom: var(--space-5);
+  right: var(--space-5);
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-full);
+  background: var(--color-bg-page);
+  border: 1.5px solid var(--color-primary-500);
+  color: var(--color-primary-700);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  z-index: var(--z-sticky);
+  box-shadow: var(--shadow-md);
+  transition:
+    transform var(--transition-base),
+    box-shadow var(--transition-base),
+    opacity var(--transition-slower),
+    visibility 0s linear 0s;
+  opacity: 1;
+  visibility: visible;
+}
+
+.music-toggle.is-hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition:
+    opacity var(--transition-slower),
+    visibility 0s linear var(--transition-slower);
+}
+
+.music-toggle:hover {
+  transform: scale(1.1);
+  box-shadow: var(--shadow-lg);
+}
+
+.music-toggle:focus-visible {
+  outline: 2px solid var(--color-accent-blue);
+  outline-offset: 4px;
+}
+
+.music-toggle:active {
+  transform: scale(0.95);
+}
+
+/* Animasi subtle pulse saat playing (state: ON) */
+.music-toggle:not(.is-muted) {
+  animation: musicPulse 2.5s ease-in-out infinite;
+}
+
+.music-toggle.is-muted {
+  animation: none;
+  border-color: var(--color-text-tertiary);
+  color: var(--color-text-tertiary);
+}
+
+@keyframes musicPulse {
+  0%, 100% {
+    box-shadow: var(--shadow-md);
+  }
+  50% {
+    box-shadow:
+      var(--shadow-md),
+      0 0 0 6px rgba(212, 175, 55, 0.15);
+  }
+}
+
+/* Icon switching based on state */
+.music-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.music-icon-off {
+  display: none;
+}
+
+.music-toggle.is-muted .music-icon-on {
+  display: none;
+}
+
+.music-toggle.is-muted .music-icon-off {
+  display: flex;
+}
+
+/* Responsive: sedikit lebih besar di tablet+ untuk touch yang lebih nyaman */
+@media (min-width: 768px) {
+  .music-toggle {
+    width: 52px;
+    height: 52px;
+    bottom: var(--space-6);
+    right: var(--space-6);
+  }
+}

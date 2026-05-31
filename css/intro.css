@@ -1,5 +1,278 @@
 /* ==========================================================
-   INTRO — JATUKRAMI (Section 2: Introduction)
+   INTRO — JATUKRAMI (Section 2: Hero with prewed background)
    3 versi background responsive (mobile/tablet/desktop).
-   Belum diimplementasi. WAJIB pakai var(--token) dari tokens.css.
+   WAJIB pakai var(--token) dari tokens.css.
    ========================================================== */
+
+.section-intro {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  isolation: isolate;
+  padding: var(--space-6) var(--space-4);
+}
+
+.intro-bg {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background-image: url('../assets/images/intro-mobile.jpg');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+@media (min-width: 768px) {
+  .intro-bg {
+    background-image: url('../assets/images/intro-tablet.jpg');
+  }
+}
+
+@media (min-width: 1024px) {
+  .intro-bg {
+    background-image: url('../assets/images/intro-desktop.jpg');
+  }
+}
+
+.intro-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(
+    to bottom,
+    rgba(62, 44, 28, 0.55) 0%,
+    rgba(62, 44, 28, 0.25) 35%,
+    rgba(62, 44, 28, 0.35) 65%,
+    rgba(62, 44, 28, 0.7) 100%
+  );
+}
+
+.intro-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--space-5);
+  max-width: 640px;
+  width: 100%;
+  color: var(--color-text-inverse);
+}
+
+.intro-heading {
+  font-family: var(--font-heading);
+  font-style: italic;
+  font-size: var(--fs-4xl);
+  font-weight: var(--fw-regular);
+  color: var(--color-primary-300);
+  letter-spacing: var(--ls-tight);
+  margin: 0;
+  line-height: var(--lh-tight);
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
+}
+
+.intro-divider {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  width: 100%;
+  max-width: 320px;
+}
+
+.divider-line {
+  flex: 1;
+  height: 1px;
+  background: var(--color-primary-300);
+  opacity: 0.6;
+}
+
+.divider-ornament {
+  width: 8px;
+  height: 8px;
+  background: var(--color-primary-500);
+  border-radius: var(--radius-full);
+  flex-shrink: 0;
+  box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.2);
+}
+
+.intro-latin {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-1);
+}
+
+.intro-latin-name {
+  font-family: var(--font-heading);
+  font-size: var(--fs-2xl);
+  font-weight: var(--fw-regular);
+  font-style: italic;
+  margin: 0;
+  color: var(--color-text-inverse);
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+  letter-spacing: var(--ls-wide);
+  line-height: var(--lh-tight);
+}
+
+.intro-latin-connector {
+  font-family: var(--font-body);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-light);
+  margin: 0;
+  color: var(--color-primary-300);
+  letter-spacing: var(--ls-wider);
+  text-transform: lowercase;
+  opacity: 0.85;
+}
+
+.intro-date {
+  font-family: var(--font-body);
+  font-size: var(--fs-base);
+  font-weight: var(--fw-medium);
+  margin: 0;
+  margin-top: var(--space-3);
+  color: var(--color-text-inverse);
+  letter-spacing: var(--ls-wide);
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+  padding: var(--space-2) var(--space-5);
+  border-top: 1px solid var(--color-primary-300);
+  border-bottom: 1px solid var(--color-primary-300);
+}
+
+.intro-scroll-btn {
+  appearance: none;
+  border: 1.5px solid var(--color-primary-300);
+  background: rgba(62, 44, 28, 0.3);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  color: var(--color-text-inverse);
+  font-family: var(--font-body);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-medium);
+  letter-spacing: var(--ls-wide);
+  padding: var(--space-3) var(--space-5);
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-top: var(--space-4);
+  transition:
+    transform var(--transition-base),
+    border-color var(--transition-base),
+    background var(--transition-base);
+}
+
+.intro-scroll-btn:hover {
+  transform: translateY(-3px);
+  border-color: var(--color-primary-500);
+  background: rgba(212, 175, 55, 0.2);
+}
+
+.intro-scroll-btn:focus-visible {
+  outline: 2px solid var(--color-accent-blue);
+  outline-offset: 4px;
+}
+
+.scroll-btn-icon {
+  display: inline-flex;
+  align-items: center;
+  animation: scrollBounce 2s ease-in-out infinite;
+}
+
+@keyframes scrollBounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(4px); }
+}
+
+/* Corner decorative ornaments — match nuansa undangan Sunda */
+.intro-corner {
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  z-index: 1;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><path d='M5 5 L5 35 M5 5 L35 5' stroke='%23D4AF37' stroke-width='1.5' fill='none' stroke-linecap='round'/><path d='M15 15 Q25 5 35 15 Q45 25 35 35 Q25 45 15 35 Q5 25 15 15' stroke='%23D4AF37' stroke-width='0.8' fill='none' opacity='0.7'/><circle cx='25' cy='25' r='2' fill='%23D4AF37'/></svg>");
+  background-repeat: no-repeat;
+  background-size: contain;
+  opacity: 0.55;
+  pointer-events: none;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+}
+
+.intro-corner-tl {
+  top: var(--space-4);
+  left: var(--space-4);
+}
+.intro-corner-tr {
+  top: var(--space-4);
+  right: var(--space-4);
+  transform: scaleX(-1);
+}
+.intro-corner-bl {
+  bottom: var(--space-4);
+  left: var(--space-4);
+  transform: scaleY(-1);
+}
+.intro-corner-br {
+  bottom: var(--space-4);
+  right: var(--space-4);
+  transform: scale(-1, -1);
+}
+
+@media (min-width: 768px) {
+  .intro-content {
+    gap: var(--space-6);
+    max-width: 720px;
+  }
+
+  .intro-divider {
+    max-width: 400px;
+  }
+
+  .intro-scroll-btn {
+    padding: var(--space-3) var(--space-6);
+  }
+
+  .intro-corner {
+    width: 100px;
+    height: 100px;
+  }
+  .intro-corner-tl,
+  .intro-corner-tr {
+    top: var(--space-5);
+  }
+  .intro-corner-bl,
+  .intro-corner-br {
+    bottom: var(--space-5);
+  }
+  .intro-corner-tl,
+  .intro-corner-bl {
+    left: var(--space-5);
+  }
+  .intro-corner-tr,
+  .intro-corner-br {
+    right: var(--space-5);
+  }
+}
+
+@media (min-width: 1024px) {
+  .intro-content {
+    gap: var(--space-6);
+    max-width: 840px;
+  }
+
+  .intro-corner {
+    width: 120px;
+    height: 120px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scroll-btn-icon {
+    animation: none;
+  }
+}

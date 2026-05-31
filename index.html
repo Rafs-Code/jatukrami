@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
-    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Noto+Sans+Sundanese:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cormorant+Garamond:wght@300;400;500;600;700&family=Noto+Sans+Sundanese:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap"
     rel="stylesheet"
   />
 
@@ -24,52 +24,497 @@
 
   <!-- ============================================================
        1. OPENING — Amplop Interaktif (Section 1)
-       Diimplementasi pada step 6.
        ============================================================ -->
-  <section id="opening" class="section-opening">
-    <!-- TODO: amplop emas + animasi buka -->
+  <section id="opening" class="section section-opening" aria-label="Pambuka undangan">
+    <div class="opening-ornament opening-ornament-tl" aria-hidden="true"></div>
+    <div class="opening-ornament opening-ornament-tr" aria-hidden="true"></div>
+    <div class="opening-ornament opening-ornament-bl" aria-hidden="true"></div>
+    <div class="opening-ornament opening-ornament-br" aria-hidden="true"></div>
+
+    <div class="opening-content">
+      <p class="opening-greeting">Wilujeng Sumping</p>
+
+      <button type="button" class="envelope" id="envelopeBtn"
+              aria-label="Pencét amplop pikeun muka undangan">
+        <div class="envelope-body">
+          <div class="envelope-back" aria-hidden="true"></div>
+          <div class="envelope-letter" aria-hidden="true">
+            <span class="letter-monogram">J</span>
+          </div>
+          <div class="envelope-front" aria-hidden="true"></div>
+          <div class="envelope-flap" aria-hidden="true"></div>
+          <div class="envelope-seal" aria-hidden="true">
+            <span class="seal-letter">J</span>
+          </div>
+        </div>
+      </button>
+
+      <p class="opening-hint">Pencét amplop kanggo muka undangan</p>
+    </div>
   </section>
 
   <!-- ============================================================
        2. INTRODUCTION — bg foto prewed (3 versi responsive)
        ============================================================ -->
-  <section id="intro" class="section-intro">
-    <!-- TODO: heading Jatukrami, aksara Sunda, tanggal, tombol Lajeng -->
+  <section id="intro" class="section-intro" aria-label="Wilujeng sumping ka acara walimah">
+    <div class="intro-bg" aria-hidden="true"></div>
+    <div class="intro-overlay" aria-hidden="true"></div>
+
+    <div class="intro-corner intro-corner-tl" aria-hidden="true"></div>
+    <div class="intro-corner intro-corner-tr" aria-hidden="true"></div>
+    <div class="intro-corner intro-corner-bl" aria-hidden="true"></div>
+    <div class="intro-corner intro-corner-br" aria-hidden="true"></div>
+
+    <div class="intro-content">
+      <h1 class="intro-heading" data-aos="fade-down" data-aos-duration="1000">Jatukrami</h1>
+
+      <div class="intro-divider" aria-hidden="true" data-aos="fade" data-aos-delay="300">
+        <span class="divider-ornament"></span>
+        <span class="divider-line"></span>
+        <span class="divider-ornament"></span>
+      </div>
+
+      <div class="intro-latin" data-aos="fade-up" data-aos-delay="500">
+        <p class="intro-latin-name" id="introGroomLatin"></p>
+        <p class="intro-latin-connector">sareng</p>
+        <p class="intro-latin-name" id="introBrideLatin"></p>
+      </div>
+
+      <p class="intro-date" id="introDate" data-aos="fade-up" data-aos-delay="700"></p>
+
+      <a
+        href="#sambutan"
+        class="intro-scroll-btn"
+        id="introScrollBtn"
+        aria-label="Lajeng ka sambutan"
+        data-aos="fade-up"
+        data-aos-delay="900">
+        <span class="scroll-btn-text">Lajeng</span>
+        <span class="scroll-btn-icon" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+               viewBox="0 0 24 24" fill="none" stroke="currentColor"
+               stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
+        </span>
+      </a>
+    </div>
   </section>
 
   <!-- ============================================================
        3. PEMBUKA / SAMBUTAN (Sunda Lemes)
        ============================================================ -->
-  <section id="sambutan" class="section">
-    <!-- TODO: Bismillah, QS Ar-Rum:21, kalimat pembuka -->
+  <section id="sambutan" class="section section-sambutan" aria-label="Sambutan sareng pembuka">
+    <div class="sambutan-bg-pattern" aria-hidden="true"></div>
+
+    <div class="sambutan-corner sambutan-corner-tl" aria-hidden="true"></div>
+    <div class="sambutan-corner sambutan-corner-tr" aria-hidden="true"></div>
+    <div class="sambutan-corner sambutan-corner-bl" aria-hidden="true"></div>
+    <div class="sambutan-corner sambutan-corner-br" aria-hidden="true"></div>
+
+    <div class="sambutan-content">
+
+      <div class="sambutan-bismillah" data-aos="fade-down" data-aos-duration="1000">
+        <p class="bismillah-arabic" lang="ar" dir="rtl">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</p>
+      </div>
+
+      <p class="sambutan-salam" data-aos="fade-up" data-aos-delay="300">
+        Assalamu'alaikum Warahmatullahi Wabarakatuh
+      </p>
+
+      <div class="sambutan-divider" aria-hidden="true" data-aos="fade" data-aos-delay="500">
+        <span class="sambutan-divider-ornament"></span>
+        <span class="sambutan-divider-line"></span>
+        <span class="sambutan-divider-ornament"></span>
+      </div>
+
+      <div class="sambutan-quran" data-aos="fade-up" data-aos-delay="600">
+        <p class="quran-source">QS. Ar-Rum : 21</p>
+        <p class="quran-arabic" lang="ar" dir="rtl">وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً ۚ إِنَّ فِي ذَٰلِكَ لَآيَاتٍ لِّقَوْمٍ يَتَفَكَّرُونَ</p>
+        <p class="quran-translation">
+          "Dan di antara tanda-tanda kekuasaan-Nya ialah Dia menciptakan untukmu pasangan hidup dari jenismu sendiri, supaya kamu cenderung dan merasa tenteram kepadanya, dan dijadikan-Nya di antaramu rasa kasih dan sayang. Sesungguhnya pada yang demikian itu benar-benar terdapat tanda-tanda bagi kaum yang berfikir."
+        </p>
+      </div>
+
+      <div class="sambutan-divider" aria-hidden="true" data-aos="fade" data-aos-delay="800">
+        <span class="sambutan-divider-ornament"></span>
+        <span class="sambutan-divider-line"></span>
+        <span class="sambutan-divider-ornament"></span>
+      </div>
+
+      <div class="sambutan-greeting" data-aos="fade-up" data-aos-delay="900">
+        <p class="greeting-text">
+          Kalayan asmaning Allah anu Maha Welas tur Maha Asih, kalayan asihing Pangéran, kami baris ngayakeun acara walimah pikeun putra-putri kami. Sumangga ngahaturkeun panyaur ka Bapa, Ibu, Sadérék, sareng Rerencangan sadayana pikeun ngaluuhan acara ieu.
+        </p>
+      </div>
+
+    </div>
   </section>
 
   <!-- ============================================================
        4. PROFIL MEMPELAI
        ============================================================ -->
-  <section id="mempelai" class="section">
-    <!-- TODO: 2 card mempelai + ornamen "&" -->
+  <section id="mempelai" class="section section-mempelai" aria-label="Profil mempelai">
+    <div class="mempelai-bg-pattern" aria-hidden="true"></div>
+
+    <div class="mempelai-header" data-aos="fade-down">
+      <p class="mempelai-eyebrow">Calon Pangantén</p>
+      <h2 class="mempelai-heading">Mempelai</h2>
+      <div class="mempelai-header-divider" aria-hidden="true">
+        <span class="header-divider-ornament"></span>
+        <span class="header-divider-line"></span>
+        <span class="header-divider-ornament"></span>
+      </div>
+    </div>
+
+    <div class="mempelai-grid">
+
+      <!-- BRIDE CARD (kiri di desktop, atas di mobile) -->
+      <article class="mempelai-card mempelai-card-bride" data-aos="fade-right" data-aos-delay="200">
+        <div class="card-photo" id="brideCardPhoto" aria-hidden="true"></div>
+        <div class="card-overlay" aria-hidden="true"></div>
+        <div class="card-content">
+          <p class="card-sunda-name" id="brideCardSunda" lang="su"></p>
+          <h3 class="card-latin-name" id="brideCardLatin"></h3>
+          <p class="card-child-status" id="brideCardChild"></p>
+          <div class="card-parents">
+            <p class="parents-label">Putri ti</p>
+            <p class="parents-names">
+              <span id="brideCardFather"></span>
+              <span class="parents-separator">&</span>
+              <span id="brideCardMother"></span>
+            </p>
+          </div>
+          <a class="card-instagram" id="brideCardIg" target="_blank"
+             rel="noopener noreferrer" aria-label="Instagram mempelai wanita">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                 viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+            </svg>
+            <span>Instagram</span>
+          </a>
+        </div>
+      </article>
+
+      <!-- AMPERSAND DIVIDER (tengah) -->
+      <div class="mempelai-divider" aria-hidden="true" data-aos="zoom-in" data-aos-delay="400">
+        <span class="divider-line-v"></span>
+        <span class="divider-amp">&</span>
+        <span class="divider-line-v"></span>
+      </div>
+
+      <!-- GROOM CARD (kanan di desktop, bawah di mobile) -->
+      <article class="mempelai-card mempelai-card-groom" data-aos="fade-left" data-aos-delay="600">
+        <div class="card-photo" id="groomCardPhoto" aria-hidden="true"></div>
+        <div class="card-overlay" aria-hidden="true"></div>
+        <div class="card-content">
+          <p class="card-sunda-name" id="groomCardSunda" lang="su"></p>
+          <h3 class="card-latin-name" id="groomCardLatin"></h3>
+          <p class="card-child-status" id="groomCardChild"></p>
+          <div class="card-parents">
+            <p class="parents-label">Putra ti</p>
+            <p class="parents-names">
+              <span id="groomCardFather"></span>
+              <span class="parents-separator">&</span>
+              <span id="groomCardMother"></span>
+            </p>
+          </div>
+          <a class="card-instagram" id="groomCardIg" target="_blank"
+             rel="noopener noreferrer" aria-label="Instagram mempelai pria">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                 viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+            </svg>
+            <span>Instagram</span>
+          </a>
+        </div>
+      </article>
+
+    </div>
   </section>
 
   <!-- ============================================================
        5. DETAIL ACARA
        ============================================================ -->
-  <section id="acara" class="section">
-    <!-- TODO: info acara + embed Google Maps -->
+  <section id="acara" class="section section-acara" aria-label="Detail acara walimah">
+    <div class="acara-bg-pattern" aria-hidden="true"></div>
+
+    <div class="acara-header" data-aos="fade-down">
+      <p class="acara-eyebrow">Calon Acara</p>
+      <h2 class="acara-heading">Acara</h2>
+      <div class="acara-header-divider" aria-hidden="true">
+        <span class="header-divider-ornament"></span>
+        <span class="header-divider-line"></span>
+        <span class="header-divider-ornament"></span>
+      </div>
+    </div>
+
+    <div class="acara-grid">
+
+      <!-- INFO CARD (kiri di desktop, atas di mobile) -->
+      <article class="acara-info" data-aos="fade-right" data-aos-delay="200">
+        <h3 class="acara-event-name" id="acaraEventName"></h3>
+
+        <ul class="acara-detail-list">
+          <li class="acara-detail-item">
+            <span class="detail-icon" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                   viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                   stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                <line x1="16" y1="2" x2="16" y2="6"></line>
+                <line x1="8" y1="2" x2="8" y2="6"></line>
+                <line x1="3" y1="10" x2="21" y2="10"></line>
+              </svg>
+            </span>
+            <div class="detail-text">
+              <p class="detail-label">Dinten</p>
+              <p class="detail-value" id="acaraDate"></p>
+            </div>
+          </li>
+
+          <li class="acara-detail-item">
+            <span class="detail-icon" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                   viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                   stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polyline points="12 6 12 12 16 14"></polyline>
+              </svg>
+            </span>
+            <div class="detail-text">
+              <p class="detail-label">Waktos</p>
+              <p class="detail-value" id="acaraTime"></p>
+            </div>
+          </li>
+
+          <li class="acara-detail-item">
+            <span class="detail-icon" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                   viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                   stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                <circle cx="12" cy="10" r="3"></circle>
+              </svg>
+            </span>
+            <div class="detail-text">
+              <p class="detail-label">Tempat</p>
+              <p class="detail-value" id="acaraVenue"></p>
+              <p class="detail-address" id="acaraAddress"></p>
+            </div>
+          </li>
+        </ul>
+
+        <a class="acara-maps-btn" id="acaraMapsLink" target="_blank"
+           rel="noopener noreferrer" aria-label="Buka lokasi acara di Google Maps">
+          <span class="maps-btn-icon" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                 viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"></polygon>
+              <line x1="8" y1="2" x2="8" y2="18"></line>
+              <line x1="16" y1="6" x2="16" y2="22"></line>
+            </svg>
+          </span>
+          <span>Buka di Google Maps</span>
+        </a>
+      </article>
+
+      <!-- MAPS EMBED (kanan di desktop, bawah di mobile) -->
+      <div class="acara-map-wrap" data-aos="fade-left" data-aos-delay="400">
+        <iframe
+          id="acaraMapEmbed"
+          class="acara-map-iframe"
+          src=""
+          width="100%"
+          height="100%"
+          style="border:0;"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="Peta lokasi acara walimah Jatukrami">
+        </iframe>
+      </div>
+
+    </div>
   </section>
 
   <!-- ============================================================
        6. COUNTDOWN TIMER
        ============================================================ -->
-  <section id="countdown" class="section">
-    <!-- TODO: Dinten | Jam | Menit | Detik -->
+  <section id="countdown" class="section section-countdown" aria-label="Itungan mundur ka acara">
+    <div class="countdown-bg-pattern" aria-hidden="true"></div>
+
+    <div class="countdown-header" data-aos="fade-down">
+      <p class="countdown-eyebrow">Calon Dinten</p>
+      <h2 class="countdown-heading">Énjing</h2>
+      <div class="countdown-header-divider" aria-hidden="true">
+        <span class="header-divider-ornament"></span>
+        <span class="header-divider-line"></span>
+        <span class="header-divider-ornament"></span>
+      </div>
+    </div>
+
+    <!-- STATE 1: BEFORE — Countdown active -->
+    <div class="countdown-state countdown-before" id="countdownBefore" data-aos="fade-up" data-aos-delay="200">
+      <p class="countdown-message">Sakedap deui kana acara</p>
+
+      <div class="countdown-boxes" role="timer" aria-live="polite">
+        <div class="countdown-box">
+          <span class="countdown-num" id="cdDays">00</span>
+          <span class="countdown-label">Dinten</span>
+        </div>
+        <div class="countdown-box">
+          <span class="countdown-num" id="cdHours">00</span>
+          <span class="countdown-label">Jam</span>
+        </div>
+        <div class="countdown-box">
+          <span class="countdown-num" id="cdMinutes">00</span>
+          <span class="countdown-label">Menit</span>
+        </div>
+        <div class="countdown-box">
+          <span class="countdown-num" id="cdSeconds">00</span>
+          <span class="countdown-label">Detik</span>
+        </div>
+      </div>
+
+      <p class="countdown-date-display" id="cdDateDisplay"></p>
+    </div>
+
+    <!-- STATE 2: ONGOING — Acara sedang berlangsung -->
+    <div class="countdown-state countdown-ongoing is-hidden" id="countdownOngoing">
+      <div class="state-ornament celebration-ornament" aria-hidden="true">
+        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48"
+             viewBox="0 0 24 24" fill="none" stroke="currentColor"
+             stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+        </svg>
+      </div>
+
+      <p class="countdown-message countdown-message-large">Acara nuju lumangsung</p>
+
+      <div class="countdown-boxes countdown-boxes-pulse">
+        <div class="countdown-box">
+          <span class="countdown-num">00</span>
+          <span class="countdown-label">Dinten</span>
+        </div>
+        <div class="countdown-box">
+          <span class="countdown-num">00</span>
+          <span class="countdown-label">Jam</span>
+        </div>
+        <div class="countdown-box">
+          <span class="countdown-num">00</span>
+          <span class="countdown-label">Menit</span>
+        </div>
+        <div class="countdown-box">
+          <span class="countdown-num">00</span>
+          <span class="countdown-label">Detik</span>
+        </div>
+      </div>
+
+      <p class="countdown-sub">Wilujeng sumping ka acara walimah</p>
+    </div>
+
+    <!-- STATE 3: ENDED — Setelah acara (BOX TETAP MUNCUL) -->
+    <div class="countdown-state countdown-ended is-hidden" id="countdownEnded">
+      <div class="state-ornament ended-ornament" aria-hidden="true">
+        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48"
+             viewBox="0 0 24 24" fill="none" stroke="currentColor"
+             stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+        </svg>
+      </div>
+
+      <p class="countdown-message countdown-message-large">Hatur Nuhun kana kasumpinganana</p>
+
+      <div class="countdown-boxes countdown-boxes-ended">
+        <div class="countdown-box">
+          <span class="countdown-num">00</span>
+          <span class="countdown-label">Dinten</span>
+        </div>
+        <div class="countdown-box">
+          <span class="countdown-num">00</span>
+          <span class="countdown-label">Jam</span>
+        </div>
+        <div class="countdown-box">
+          <span class="countdown-num">00</span>
+          <span class="countdown-label">Menit</span>
+        </div>
+        <div class="countdown-box">
+          <span class="countdown-num">00</span>
+          <span class="countdown-label">Detik</span>
+        </div>
+      </div>
+
+      <p class="countdown-sub countdown-sub-doa">
+        Mugia janten kulawarga sakinah, mawaddah, warahmah
+      </p>
+    </div>
   </section>
 
   <!-- ============================================================
        7. GALERI FOTO
        ============================================================ -->
-  <section id="galeri" class="section">
-    <!-- TODO: hero foto + carousel thumbnail -->
+  <section id="galeri" class="section section-galeri" aria-label="Galeri foto mempelai">
+    <div class="galeri-bg-pattern" aria-hidden="true"></div>
+
+    <div class="galeri-header" data-aos="fade-down">
+      <p class="galeri-eyebrow">Galeri Memori</p>
+      <h2 class="galeri-heading">Galeri</h2>
+      <div class="galeri-header-divider" aria-hidden="true">
+        <span class="header-divider-ornament"></span>
+        <span class="header-divider-line"></span>
+        <span class="header-divider-ornament"></span>
+      </div>
+    </div>
+
+    <div class="galeri-carousel" data-aos="fade-up" data-aos-delay="200">
+
+      <!-- HERO IMAGE -->
+      <div class="galeri-hero" id="galeriHero" role="button" tabindex="0"
+           aria-label="Pencét pikeun ningali foto langkung ageng">
+        <!-- IMG akan di-inject via JS -->
+      </div>
+
+      <!-- INDICATOR DOTS -->
+      <div class="galeri-dots" id="galeriDots" role="tablist"
+           aria-label="Indikator foto">
+        <!-- Dots akan di-generate via JS -->
+      </div>
+
+      <!-- THUMBNAIL STRIP + ARROWS -->
+      <div class="galeri-thumb-wrap">
+        <button type="button" class="galeri-arrow galeri-arrow-prev"
+                id="galeriArrowPrev" aria-label="Foto saencanna">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+               viewBox="0 0 24 24" fill="none" stroke="currentColor"
+               stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="15 18 9 12 15 6"></polyline>
+          </svg>
+        </button>
+
+        <div class="galeri-thumbs" id="galeriThumbs" role="tablist"
+             aria-label="Pilihan foto">
+          <!-- Thumbnails akan di-generate via JS -->
+        </div>
+
+        <button type="button" class="galeri-arrow galeri-arrow-next"
+                id="galeriArrowNext" aria-label="Foto saterasna">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+               viewBox="0 0 24 24" fill="none" stroke="currentColor"
+               stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="9 18 15 12 9 6"></polyline>
+          </svg>
+        </button>
+      </div>
+
+    </div>
   </section>
 
   <!-- ============================================================
@@ -86,16 +531,66 @@
     <!-- TODO: ucapan tarima kasih, salin tautan, credit -->
   </footer>
 
+  <!-- ============ LIGHTBOX OVERLAY (Section 7: Galeri, persist di body) ============ -->
+  <div class="galeri-lightbox is-hidden" id="galeriLightbox"
+       role="dialog" aria-modal="true" aria-label="Foto fullscreen"
+       tabindex="-1">
+    <button type="button" class="lightbox-close" id="lightboxClose"
+            aria-label="Tutup gambar">
+      <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28"
+           viewBox="0 0 24 24" fill="none" stroke="currentColor"
+           stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="18" y1="6" x2="6" y2="18"></line>
+        <line x1="6" y1="6" x2="18" y2="18"></line>
+      </svg>
+    </button>
+
+    <div class="lightbox-content">
+      <img id="lightboxImg" src="" alt="Foto galeri fullscreen" />
+    </div>
+  </div>
+
+  <!-- ============ MUSIC TOGGLE (persist di semua section) ============ -->
+  <button
+    type="button"
+    id="musicToggle"
+    class="music-toggle is-hidden"
+    aria-label="Mateni atanapi nyalakeun musik"
+    aria-pressed="false">
+    <span class="music-icon music-icon-on" aria-hidden="true">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+           viewBox="0 0 24 24" fill="none" stroke="currentColor"
+           stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+        <path d="M15.54 8.46a5 5 0 0 1 0 7.07"/>
+        <path d="M19.07 4.93a10 10 0 0 1 0 14.14"/>
+      </svg>
+    </span>
+    <span class="music-icon music-icon-off" aria-hidden="true">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+           viewBox="0 0 24 24" fill="none" stroke="currentColor"
+           stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+        <line x1="22" y1="9" x2="16" y2="15"/>
+        <line x1="16" y1="9" x2="22" y2="15"/>
+      </svg>
+    </span>
+  </button>
+
   <!-- ============ AOS (scroll animation) JS ============ -->
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
   <!-- ============ SCRIPTS ============ -->
   <script src="js/config.js"></script>     <!-- WAJIB pertama: data CONFIG -->
+  <script src="js/music.js"></script>      <!-- sebelum envelope.js (expose window.MusicToggle) -->
+  <script src="js/scroll-helper.js"></script> <!-- sebelum envelope & intro (expose window.SmoothScroll) -->
   <script src="js/envelope.js"></script>
+  <script src="js/intro.js"></script>      <!-- Section 2: populate intro dari CONFIG -->
+  <script src="js/mempelai.js"></script>   <!-- Section 4: populate mempelai dari CONFIG -->
+  <script src="js/acara.js"></script>      <!-- Section 5: populate detail acara dari CONFIG -->
   <script src="js/countdown.js"></script>
   <script src="js/gallery.js"></script>
   <script src="js/form.js"></script>
-  <script src="js/music.js"></script>
   <script src="js/share.js"></script>
   <script src="js/main.js"></script>        <!-- WAJIB terakhir: init AOS dll -->
 

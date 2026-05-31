@@ -7,5 +7,11 @@
 @import url('base.css');       /* reset & typography defaults */
 @import url('opening.css');    /* Section 1: amplop interaktif */
 @import url('intro.css');      /* Section 2: introduction (3 bg responsive) */
-@import url('sections.css');   /* Section 3-9 */
+@import url('sambutan.css');   /* Section 3: sambutan / pembuka religius */
+@import url('mempelai.css');   /* Section 4: profil mempelai */
+@import url('acara.css');      /* Section 5: detail acara + maps */
+@import url('countdown.css');  /* Section 6: countdown timer 3 state */
+@import url('galeri.css');     /* Section 7: galeri foto carousel + lightbox */
+@import url('sections.css');   /* Section 8-9 */
+@import url('music-toggle.css'); /* Komponen floating music toggle */
 @import url('responsive.css'); /* WAJIB terakhir — media queries tambahan */

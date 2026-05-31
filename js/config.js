@@ -1,12 +1,6 @@
-/* ==========================================================
-   CONFIG — JATUKRAMI
-   Pusat kontrol data. Ganti tanggal/nama/lokasi cukup di sini.
-   ========================================================== */
 const CONFIG = {
-  // ============ TANGGAL PERNIKAHAN ============
   weddingDate: '2026-08-15T08:00:00',
 
-  // ============ MEMPELAI ============
   groom: {
     fullName: 'Raden Asep Wirajaya',
     shortName: 'Asep',
@@ -17,6 +11,7 @@ const CONFIG = {
     instagram: 'https://instagram.com/asep_dummy',
     photo: 'assets/images/groom.jpg'
   },
+
   bride: {
     fullName: 'Nyimas Euis Nuraeni',
     shortName: 'Euis',
@@ -28,25 +23,30 @@ const CONFIG = {
     photo: 'assets/images/bride.jpg'
   },
 
-  // ============ ACARA (resepsi aja) ============
   event: {
-    name: 'Walimatul \'Urs',
+    name: "Walimatul 'Urs",
     dateDisplay: 'Saptu, 15 Agustus 2026',
     time: '10.00 — 14.00 WIB',
-    venue: 'Gedung Sasana Budaya Ganesha',
-    address: 'Jl. Tamansari No.73, Bandung, Jawa Barat',
-    mapsEmbedUrl: 'https://www.google.com/maps/embed?pb=...',
-    mapsLink: 'https://maps.app.goo.gl/...'
+    venue: 'SMK Negeri 13 Bandung',
+    address: 'Jl. Soekarno-Hatta No.10, Jatisari, Kec. Buahbatu, Bandung, Jawa Barat',
+    mapsEmbedUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.597993486579!2d107.6544202758355!3d-6.938554693061422!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e8109c2647c7%3A0xe47eec0775b8d648!2sVocational%20High%20School%2013%20Bandung!5e0!3m2!1sen!2sid!4v1780145454635!5m2!1sen!2sid',
+    mapsLink: 'https://maps.app.goo.gl/D9keytrSWmBrZxR99'
   },
 
-  // ============ FORMSPREE ENDPOINT ============
-  formspreeEndpoint: 'https://formspree.io/f/XXXXXX',
+  formspreeEndpoint: 'https://formspree.io/f/xdajvkbr',
 
-  // ============ BACKGROUND MUSIC ============
-  musicFile: 'assets/music/bg-music.mp3',
-  musicAutoplay: true,
+  music: {
+    file: 'assets/music/bg-music.mp3',
+    autoplay: true,
+    defaultVolume: 0.4
+  },
 
-  // ============ GALERI ============
+  introBackgrounds: {
+    mobile: 'assets/images/intro-mobile.jpg',
+    tablet: 'assets/images/intro-tablet.jpg',
+    desktop: 'assets/images/intro-desktop.jpg'
+  },
+
   galleryImages: [
     'assets/images/gallery/1.jpg',
     'assets/images/gallery/2.jpg',
@@ -58,13 +58,25 @@ const CONFIG = {
     'assets/images/gallery/8.jpg'
   ],
 
-  // ============ DUMMY UCAPAN (testimoni section) ============
   dummyWishes: [
-    { name: 'Kang Dadang', status: 'Sumping', message: 'Wilujeng nikah, mugia janten kulawarga sakinah.' },
-    { name: 'Teh Neneng', status: 'Sumping', message: 'Bagja pisan ningali sadérék bagja, wilujeng!' },
-    { name: 'Mang Ujang', status: 'Teu Tiasa Sumping', message: 'Hapunten teu tiasa sumping, mugi lancar acarana.' }
+    {
+      name: 'Kang Dadang',
+      status: 'Sumping',
+      message: 'Wilujeng nikah, mugia janten kulawarga sakinah.'
+    },
+    {
+      name: 'Teh Neneng',
+      status: 'Sumping',
+      message: 'Bagja pisan ningali sadérék bagja, wilujeng!'
+    },
+    {
+      name: 'Mang Ujang',
+      status: 'Teu Tiasa Sumping',
+      message: 'Hapunten teu tiasa sumping, mugi lancar acarana.'
+    }
   ],
 
-  // ============ CREDIT ============
   credit: '@xirpl2'
 };
+
+window.CONFIG = CONFIG;

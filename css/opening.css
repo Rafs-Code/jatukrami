@@ -1,5 +1,237 @@
 /* ==========================================================
    OPENING — JATUKRAMI (Section 1: Amplop Interaktif)
-   Belum diimplementasi. Diisi pada step 6.
    WAJIB pakai var(--token) dari tokens.css.
    ========================================================== */
+
+.section-opening {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-cover);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-bg-page);
+  padding: var(--space-4);
+  overflow: hidden;
+  transition: opacity var(--transition-slower), visibility 0s linear 800ms;
+}
+
+.section-opening.is-opened {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.opening-ornament {
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='3' fill='%23D4AF37'/><circle cx='50' cy='20' r='2' fill='%23D4AF37'/><circle cx='50' cy='80' r='2' fill='%23D4AF37'/><circle cx='20' cy='50' r='2' fill='%23D4AF37'/><circle cx='80' cy='50' r='2' fill='%23D4AF37'/><path d='M50 30 Q60 50 50 70 Q40 50 50 30Z' fill='none' stroke='%23D4AF37' stroke-width='0.5'/></svg>");
+  background-repeat: no-repeat;
+  background-size: contain;
+  opacity: 0.12;
+  pointer-events: none;
+}
+
+.opening-ornament-tl { top: var(--space-5); left: var(--space-5); }
+.opening-ornament-tr { top: var(--space-5); right: var(--space-5);
+                       transform: scaleX(-1); }
+.opening-ornament-bl { bottom: var(--space-5); left: var(--space-5);
+                       transform: scaleY(-1); }
+.opening-ornament-br { bottom: var(--space-5); right: var(--space-5);
+                       transform: scale(-1, -1); }
+
+.opening-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-6);
+  text-align: center;
+  max-width: 480px;
+}
+
+.opening-greeting {
+  font-family: var(--font-heading);
+  font-style: italic;
+  font-size: var(--fs-2xl);
+  font-weight: var(--fw-regular);
+  color: var(--color-primary-700);
+  letter-spacing: var(--ls-wide);
+  margin: 0;
+}
+
+.envelope {
+  appearance: none;
+  border: none;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+  position: relative;
+  width: 280px;
+  height: 180px;
+  perspective: 1200px;
+  animation: envelopeFloat 3s ease-in-out infinite;
+  transition: transform var(--transition-base),
+              filter var(--transition-base);
+}
+
+.envelope:hover {
+  filter: drop-shadow(var(--shadow-glow));
+}
+
+.envelope.is-opening {
+  animation: none;
+}
+
+@keyframes envelopeFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+.envelope-body {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+}
+
+.envelope-back {
+  position: absolute;
+  inset: 0;
+  background: var(--color-primary-700);
+  border-radius: var(--radius-sm);
+  z-index: 1;
+}
+
+.envelope-front {
+  position: absolute;
+  inset: 0;
+  background: var(--color-primary-500);
+  border-radius: var(--radius-sm);
+  z-index: 3;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+}
+
+.envelope-front::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, var(--color-primary-300) 0%,
+              var(--color-primary-700) 100%);
+  border-radius: var(--radius-sm);
+  opacity: 0.3;
+}
+
+.envelope-flap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 50%;
+  background: var(--color-primary-700);
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+  transform-origin: top center;
+  transition: transform 700ms cubic-bezier(0.65, 0, 0.35, 1);
+  z-index: 4;
+}
+
+.envelope.is-opening .envelope-flap {
+  transform: rotateX(-180deg);
+}
+
+.envelope-letter {
+  position: absolute;
+  top: 15%;
+  left: 8%;
+  right: 8%;
+  bottom: 15%;
+  background: var(--color-bg-surface);
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  transition:
+    transform 800ms cubic-bezier(0.34, 1.56, 0.64, 1) 400ms,
+    z-index 0s step-end 0s;
+}
+
+.envelope.is-opening .envelope-letter {
+  transform: translateY(-120%);
+  z-index: 6;
+  transition:
+    transform 800ms cubic-bezier(0.34, 1.56, 0.64, 1) 400ms,
+    z-index 0s step-end 1000ms;
+}
+
+.letter-monogram {
+  font-family: var(--font-heading);
+  font-size: var(--fs-2xl);
+  font-weight: var(--fw-regular);
+  color: var(--color-primary-700);
+  font-style: italic;
+}
+
+.envelope-seal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 50px;
+  height: 50px;
+  background: var(--color-primary-500);
+  border: 2px solid var(--color-primary-700);
+  border-radius: var(--radius-full);
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 5;
+  box-shadow: var(--shadow-md);
+  transition: transform var(--transition-base), opacity var(--transition-base);
+}
+
+.envelope.is-opening .envelope-seal {
+  transform: translate(-50%, -50%) scale(0);
+  opacity: 0;
+}
+
+.seal-letter {
+  font-family: var(--font-heading);
+  font-size: var(--fs-xl);
+  font-weight: var(--fw-semibold);
+  color: var(--color-text-inverse);
+  font-style: italic;
+}
+
+.opening-hint {
+  font-family: var(--font-body);
+  font-size: var(--fs-sm);
+  color: var(--color-text-tertiary);
+  margin: 0;
+  letter-spacing: var(--ls-wide);
+  animation: hintPulse 2.5s ease-in-out infinite;
+}
+
+@keyframes hintPulse {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
+
+@media (min-width: 768px) {
+  .envelope {
+    width: 320px;
+    height: 200px;
+  }
+  .envelope-seal {
+    width: 60px;
+    height: 60px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .envelope {
+    width: 360px;
+    height: 230px;
+  }
+}

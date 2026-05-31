@@ -1,0 +1,257 @@
+/* ==========================================================
+   ACARA — JATUKRAMI (Section 5: Detail Acara)
+   Card info + Google Maps embed responsive.
+   WAJIB pakai var(--token) dari tokens.css.
+   ========================================================== */
+
+.section-acara {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(
+    180deg,
+    var(--color-bg-page) 0%,
+    var(--color-bg-surface) 100%
+  );
+  padding: var(--space-8) var(--space-4);
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.acara-bg-pattern {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'><g fill='none' stroke='%23D4AF37' stroke-width='0.5' opacity='0.4'><path d='M100 60 L120 100 L100 140 L80 100 Z'/><circle cx='100' cy='100' r='2' fill='%23D4AF37'/></g></svg>");
+  background-repeat: repeat;
+  background-size: 200px 200px;
+  opacity: 0.06;
+  pointer-events: none;
+}
+
+/* ============ HEADER ============ */
+.acara-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--space-2);
+  margin-bottom: var(--space-7);
+  max-width: 600px;
+}
+
+.acara-eyebrow {
+  font-family: var(--font-body);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-medium);
+  color: var(--color-primary-700);
+  letter-spacing: var(--ls-wider);
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.acara-heading {
+  font-family: var(--font-heading);
+  font-style: italic;
+  font-size: var(--fs-3xl);
+  font-weight: var(--fw-regular);
+  color: var(--color-text-primary);
+  margin: 0;
+  line-height: var(--lh-tight);
+}
+
+.acara-header-divider {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  width: 100%;
+  max-width: 280px;
+  margin-top: var(--space-3);
+}
+
+/* ============ GRID LAYOUT ============ */
+.acara-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-6);
+  width: 100%;
+  max-width: 1080px;
+}
+
+@media (min-width: 1024px) {
+  .acara-grid {
+    grid-template-columns: 1fr 1fr;
+    align-items: stretch;
+  }
+}
+
+/* ============ INFO CARD ============ */
+.acara-info {
+  background: rgba(255, 255, 255, 0.5);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6) var(--space-5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+  box-shadow: var(--shadow-md);
+}
+
+@media (min-width: 768px) {
+  .acara-info {
+    padding: var(--space-7) var(--space-6);
+  }
+}
+
+.acara-event-name {
+  font-family: var(--font-heading);
+  font-style: italic;
+  font-size: var(--fs-2xl);
+  font-weight: var(--fw-regular);
+  color: var(--color-primary-700);
+  margin: 0;
+  text-align: center;
+  padding-bottom: var(--space-4);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.acara-detail-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+
+.acara-detail-item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-4);
+}
+
+.detail-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-full);
+  background: var(--color-bg-elevated);
+  color: var(--color-primary-700);
+}
+
+.detail-text {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.detail-label {
+  font-family: var(--font-body);
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-semibold);
+  color: var(--color-primary-700);
+  letter-spacing: var(--ls-wider);
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.detail-value {
+  font-family: var(--font-heading);
+  font-size: var(--fs-lg);
+  font-weight: var(--fw-regular);
+  font-style: italic;
+  color: var(--color-text-primary);
+  margin: 0;
+  line-height: var(--lh-tight);
+}
+
+.detail-address {
+  font-family: var(--font-body);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-regular);
+  color: var(--color-text-secondary);
+  margin: 0;
+  margin-top: var(--space-1);
+  line-height: var(--lh-normal);
+}
+
+/* ============ MAPS BUTTON ============ */
+.acara-maps-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-5);
+  background: var(--color-primary-500);
+  border: 1.5px solid var(--color-primary-700);
+  border-radius: var(--radius-full);
+  color: var(--color-text-inverse);
+  font-family: var(--font-body);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-semibold);
+  letter-spacing: var(--ls-wide);
+  text-decoration: none;
+  cursor: pointer;
+  margin-top: var(--space-2);
+  align-self: center;
+  transition:
+    transform var(--transition-base),
+    background var(--transition-base),
+    box-shadow var(--transition-base);
+}
+
+.acara-maps-btn:hover {
+  transform: translateY(-3px);
+  background: var(--color-primary-700);
+  box-shadow: var(--shadow-lg);
+}
+
+.acara-maps-btn:focus-visible {
+  outline: 2px solid var(--color-accent-blue);
+  outline-offset: 4px;
+}
+
+.maps-btn-icon {
+  display: inline-flex;
+  align-items: center;
+}
+
+/* ============ MAPS EMBED WRAP ============ */
+.acara-map-wrap {
+  position: relative;
+  width: 100%;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--color-border-strong);
+  min-height: 320px;
+  background: var(--color-bg-elevated);
+}
+
+@media (min-width: 768px) {
+  .acara-map-wrap {
+    min-height: 400px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .acara-map-wrap {
+    min-height: 100%;
+  }
+}
+
+.acara-map-iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 320px;
+  border: 0;
+}

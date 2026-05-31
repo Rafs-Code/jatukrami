@@ -28,6 +28,11 @@
   --color-accent:         #C97B4A;  /* warm amber, CTA */
   --color-accent-hover:   #B86838;
 
+  /* Soft Blue Accent (match kebaya bride — minor accent only) */
+  --color-accent-blue-light:  #DBE6EE;
+  --color-accent-blue:        #85B7EB;
+  --color-accent-blue-dark:   #4A7BA8;
+
   /* States */
   --color-success:        #5C8A6E;
   --color-warning:        #D4A332;
@@ -36,6 +41,7 @@
   /* Border & Divider */
   --color-border:         #E8D9BC;
   --color-border-strong:  #C9A968;
+  --color-border-blue:        #85B7EB;
 
   /* ============ TYPOGRAPHY ============ */
   /* Font Families */

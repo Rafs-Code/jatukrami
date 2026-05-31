@@ -1,0 +1,268 @@
+/* ==========================================================
+   COUNTDOWN — JATUKRAMI (Section 6: Countdown Timer)
+   3 state: before, ongoing, ended.
+   SEMUA state tampilkan 4 box (konsisten layout).
+   ========================================================== */
+
+.section-countdown {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(
+    180deg,
+    var(--color-bg-surface) 0%,
+    var(--color-bg-page) 100%
+  );
+  padding: var(--space-8) var(--space-4);
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.countdown-bg-pattern {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'><g fill='none' stroke='%23D4AF37' stroke-width='0.5' opacity='0.4'><circle cx='100' cy='100' r='40'/><path d='M100 70 L100 100 L120 110' stroke-linecap='round'/><circle cx='100' cy='100' r='2' fill='%23D4AF37'/></g></svg>");
+  background-repeat: repeat;
+  background-size: 240px 240px;
+  opacity: 0.06;
+  pointer-events: none;
+}
+
+/* HEADER */
+.countdown-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--space-2);
+  margin-bottom: var(--space-6);
+  max-width: 600px;
+}
+
+.countdown-eyebrow {
+  font-family: var(--font-body);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-medium);
+  color: var(--color-primary-700);
+  letter-spacing: var(--ls-wider);
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.countdown-heading {
+  font-family: var(--font-heading);
+  font-style: italic;
+  font-size: var(--fs-3xl);
+  font-weight: var(--fw-regular);
+  color: var(--color-text-primary);
+  margin: 0;
+  line-height: var(--lh-tight);
+}
+
+.countdown-header-divider {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  width: 100%;
+  max-width: 280px;
+  margin-top: var(--space-3);
+}
+
+/* STATE WRAPPER */
+.countdown-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--space-5);
+  max-width: 720px;
+  width: 100%;
+}
+
+.countdown-state.is-hidden {
+  display: none;
+}
+
+/* STATE ORNAMENT (top of ongoing/ended) */
+.state-ornament {
+  color: var(--color-primary-500);
+}
+
+.celebration-ornament {
+  animation: ornamentSpin 4s linear infinite;
+}
+
+.ended-ornament {
+  animation: heartBeat 2.5s ease-in-out infinite;
+}
+
+@keyframes ornamentSpin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes heartBeat {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+
+/* MESSAGE TEXT */
+.countdown-message {
+  font-family: var(--font-heading);
+  font-style: italic;
+  font-size: var(--fs-lg);
+  font-weight: var(--fw-regular);
+  color: var(--color-text-secondary);
+  margin: 0;
+  letter-spacing: var(--ls-wide);
+}
+
+.countdown-message-large {
+  font-size: var(--fs-2xl);
+  color: var(--color-primary-700);
+}
+
+/* COUNTDOWN BOXES (4 box grid) */
+.countdown-boxes {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-3);
+  width: 100%;
+  max-width: 600px;
+}
+
+.countdown-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding: var(--space-4) var(--space-2);
+  background: rgba(255, 255, 255, 0.6);
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  min-height: 100px;
+  transition: transform var(--transition-base), box-shadow var(--transition-base);
+}
+
+.countdown-box:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+.countdown-num {
+  font-family: var(--font-heading);
+  font-style: italic;
+  font-size: var(--fs-3xl);
+  font-weight: var(--fw-regular);
+  color: var(--color-primary-700);
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+
+.countdown-label {
+  font-family: var(--font-body);
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-semibold);
+  color: var(--color-text-secondary);
+  letter-spacing: var(--ls-wider);
+  text-transform: uppercase;
+}
+
+/* DATE DISPLAY (Before state only) */
+.countdown-date-display {
+  font-family: var(--font-body);
+  font-size: var(--fs-base);
+  font-weight: var(--fw-medium);
+  color: var(--color-text-primary);
+  margin: 0;
+  margin-top: var(--space-2);
+  padding: var(--space-2) var(--space-5);
+  border-top: 1px solid var(--color-primary-300);
+  border-bottom: 1px solid var(--color-primary-300);
+  letter-spacing: var(--ls-wide);
+}
+
+/* ONGOING STATE — pulse animation */
+.countdown-boxes-pulse .countdown-box {
+  animation: boxPulse 2s ease-in-out infinite;
+}
+
+.countdown-boxes-pulse .countdown-box:nth-child(2) { animation-delay: 0.2s; }
+.countdown-boxes-pulse .countdown-box:nth-child(3) { animation-delay: 0.4s; }
+.countdown-boxes-pulse .countdown-box:nth-child(4) { animation-delay: 0.6s; }
+
+@keyframes boxPulse {
+  0%, 100% {
+    border-color: var(--color-border-strong);
+    box-shadow: var(--shadow-md);
+  }
+  50% {
+    border-color: var(--color-primary-500);
+    box-shadow:
+      var(--shadow-md),
+      0 0 0 4px rgba(212, 175, 55, 0.15);
+  }
+}
+
+/* ENDED STATE — boxes dengan warm glow (lebih kalem dari pulse) */
+.countdown-boxes-ended .countdown-box {
+  background: rgba(212, 175, 55, 0.08);
+  border-color: var(--color-primary-300);
+}
+
+/* SUB TEXT (di bawah box) */
+.countdown-sub {
+  font-family: var(--font-body);
+  font-size: var(--fs-base);
+  font-weight: var(--fw-regular);
+  font-style: italic;
+  color: var(--color-text-secondary);
+  margin: 0;
+  letter-spacing: var(--ls-wide);
+  max-width: 540px;
+  line-height: var(--lh-relaxed);
+}
+
+.countdown-sub-doa {
+  font-size: var(--fs-base);
+  color: var(--color-text-primary);
+  font-style: italic;
+}
+
+/* RESPONSIVE */
+@media (min-width: 768px) {
+  .countdown-boxes {
+    gap: var(--space-4);
+  }
+
+  .countdown-box {
+    padding: var(--space-5) var(--space-3);
+    min-height: 120px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .countdown-boxes {
+    gap: var(--space-5);
+    max-width: 720px;
+  }
+
+  .countdown-box {
+    min-height: 140px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .celebration-ornament,
+  .ended-ornament,
+  .countdown-boxes-pulse .countdown-box {
+    animation: none;
+  }
+}
