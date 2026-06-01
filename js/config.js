@@ -2,24 +2,24 @@ const CONFIG = {
   weddingDate: '2026-08-15T08:00:00',
 
   groom: {
-    fullName: 'Raden Asep Wirajaya',
-    shortName: 'Asep',
-    sundaName: 'ᮛᮓᮦᮔ᮪ ᮃᮞᮨᮕ᮪ ᮝᮤᮛᮏᮚ',
+    fullName: 'Sachio Fadil Taufik',
+    shortName: 'Sachio',
+    sundaName: 'ᮞᮎᮤᮇ ᮕᮓᮤᮜ᮪ ᮒᮧᮕᮤᮊ᮪',
     child: 'putra kahiji',
-    father: 'Bapa H. Endang Wirajaya',
-    mother: 'Ibu Hj. Siti Rohmah',
-    instagram: 'https://instagram.com/asep_dummy',
+    father: 'Bapa Kevin Wijaya',
+    mother: 'Ibu Michele Febianti',
+    instagram: 'https://www.instagram.com/sachiofadil29',
     photo: 'assets/images/groom.jpg'
   },
 
   bride: {
-    fullName: 'Nyimas Euis Nuraeni',
-    shortName: 'Euis',
-    sundaName: 'ᮑᮤᮙᮞ᮪ ᮇᮄᮞ᮪ ᮔᮥᮛᮍᮨᮔᮤ',
-    child: 'putri bungsu',
-    father: 'Bapa H. Dadang Sutisna',
-    mother: 'Ibu Hj. Aisyah',
-    instagram: 'https://instagram.com/euis_dummy',
+    fullName: 'Farida Diana Nabilla',
+    shortName: 'Farida',
+    sundaName: 'ᮕᮛᮤᮓ ᮓᮤᮃᮔ ᮔᮘᮤᮜ',
+    child: 'putri kadua',
+    father: 'Bapa Pieter Hendrik',
+    mother: 'Ibu Charlotte Hendrik',
+    instagram: 'https://www.instagram.com/njmxf_',
     photo: 'assets/images/bride.jpg'
   },
 
