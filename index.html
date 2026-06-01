@@ -520,15 +520,217 @@
   <!-- ============================================================
        8. FORM UCAPAN & DOA
        ============================================================ -->
-  <section id="ucapan" class="section">
-    <!-- TODO: form Formspree + dummy ucapan -->
+  <section id="ucapan" class="section section-ucapan" aria-label="Form ucapan dan doa">
+    <div class="ucapan-bg-pattern" aria-hidden="true"></div>
+
+    <div class="ucapan-header" data-aos="fade-down">
+      <p class="ucapan-eyebrow">Ucapan &amp; Doa</p>
+      <h2 class="ucapan-heading">Ucapan</h2>
+      <div class="ucapan-header-divider" aria-hidden="true">
+        <span class="header-divider-ornament"></span>
+        <span class="header-divider-line"></span>
+        <span class="header-divider-ornament"></span>
+      </div>
+      <p class="ucapan-intro">
+        Sumangga ngintunkeun ucapan sareng doa kanggo calon pangantén
+      </p>
+    </div>
+
+    <div class="ucapan-grid">
+
+      <!-- FORM CARD -->
+      <div class="ucapan-form-card" data-aos="fade-right" data-aos-delay="200">
+        <form id="ucapanForm" class="ucapan-form" novalidate>
+
+          <!-- NAMA -->
+          <div class="form-field">
+            <label for="ucapanName" class="form-label">Nami</label>
+            <input
+              type="text"
+              id="ucapanName"
+              name="name"
+              class="form-input"
+              placeholder="Asma sadérék"
+              required
+              minlength="2"
+              maxlength="60"
+              autocomplete="name"
+            />
+            <span class="form-error" id="ucapanNameError" aria-live="polite"></span>
+          </div>
+
+          <!-- KEHADIRAN -->
+          <div class="form-field">
+            <span class="form-label">Kehadiran</span>
+            <div class="form-radio-group" role="radiogroup" aria-label="Status kehadiran">
+              <label class="form-radio">
+                <input type="radio" name="status" value="Sumping" checked />
+                <span class="form-radio-pill">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                       viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                       stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
+                       aria-hidden="true">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                  <span>Sumping</span>
+                </span>
+              </label>
+              <label class="form-radio">
+                <input type="radio" name="status" value="Teu Tiasa Sumping" />
+                <span class="form-radio-pill">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                       viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                       stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
+                       aria-hidden="true">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                  </svg>
+                  <span>Teu Tiasa Sumping</span>
+                </span>
+              </label>
+            </div>
+          </div>
+
+          <!-- PESAN -->
+          <div class="form-field">
+            <label for="ucapanMessage" class="form-label">Ucapan / Doa</label>
+            <textarea
+              id="ucapanMessage"
+              name="message"
+              class="form-textarea"
+              placeholder="Tuliskeun ucapan sareng doa sadérék..."
+              required
+              minlength="5"
+              maxlength="500"
+              rows="4"
+            ></textarea>
+            <span class="form-error" id="ucapanMessageError" aria-live="polite"></span>
+            <span class="form-counter" id="ucapanCounter" aria-hidden="true">0 / 500</span>
+          </div>
+
+          <!-- SUBMIT BUTTON -->
+          <button type="submit" class="form-submit" id="ucapanSubmit">
+            <span class="submit-text">Kintunkeun Ucapan</span>
+            <span class="submit-icon" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
+                   viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                   stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="22" y1="2" x2="11" y2="13"></line>
+                <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+              </svg>
+            </span>
+          </button>
+
+          <!-- STATUS MESSAGE (sukses/gagal) -->
+          <div class="form-status" id="ucapanStatus" role="status" aria-live="polite"></div>
+
+        </form>
+      </div>
+
+      <!-- WISHES LIST -->
+      <div class="ucapan-list-card" data-aos="fade-left" data-aos-delay="400">
+        <div class="ucapan-list-header">
+          <p class="ucapan-list-eyebrow">Ucapan Anu Parantos Sumping</p>
+          <span class="ucapan-list-count" id="ucapanCount">0</span>
+        </div>
+        <ul class="ucapan-list" id="ucapanList" aria-live="polite">
+          <!-- Wishes injected via JS -->
+        </ul>
+      </div>
+
+    </div>
   </section>
 
   <!-- ============================================================
        9. FOOTER
        ============================================================ -->
-  <footer id="footer" class="section">
-    <!-- TODO: ucapan tarima kasih, salin tautan, credit -->
+  <footer id="footer" class="section section-footer" aria-label="Panutup undangan">
+    <div class="footer-bg-pattern" aria-hidden="true"></div>
+
+    <div class="footer-content">
+
+      <!-- THANK YOU MESSAGE -->
+      <div class="footer-thanks" data-aos="fade-up">
+        <div class="footer-ornament-top" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" width="56" height="56"
+               viewBox="0 0 24 24" fill="none" stroke="currentColor"
+               stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+          </svg>
+        </div>
+
+        <h2 class="footer-greeting">Hatur Nuhun</h2>
+        <p class="footer-greeting-sub">Kana Kasumpinganana</p>
+
+        <div class="footer-divider" aria-hidden="true">
+          <span class="header-divider-ornament"></span>
+          <span class="header-divider-line"></span>
+          <span class="header-divider-ornament"></span>
+        </div>
+
+        <p class="footer-doa">
+          Mugia janten kulawarga sakinah, mawaddah, warahmah
+        </p>
+      </div>
+
+      <!-- SHARE SECTION -->
+      <div class="footer-share" data-aos="fade-up" data-aos-delay="200">
+        <p class="footer-share-label">Bagikeun Undangan</p>
+        <button type="button" class="footer-share-btn" id="footerShareBtn"
+                aria-label="Salin tautan undangan">
+          <span class="share-btn-icon share-icon-default" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
+                 viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+              <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+            </svg>
+          </span>
+          <span class="share-btn-icon share-icon-success" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
+                 viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                 stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+          </span>
+          <span class="share-btn-text" id="footerShareText">Salin Tautan</span>
+        </button>
+      </div>
+
+      <!-- DIVIDER -->
+      <div class="footer-section-divider" aria-hidden="true"
+           data-aos="fade" data-aos-delay="300"></div>
+
+      <!-- CREDIT -->
+      <div class="footer-credit" data-aos="fade-up" data-aos-delay="400">
+        <h3 class="footer-project-name">Jatukrami</h3>
+        <p class="footer-project-tagline">Undangan Pernikahan Online</p>
+
+        <p class="footer-credit-text">
+          Dibuat ku
+          <a href="https://www.instagram.com/elvnrpltwo._"
+             class="footer-credit-link"
+             target="_blank"
+             rel="noopener noreferrer"
+             aria-label="Instagram kelas XI RPL 2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14"
+                 viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                 aria-hidden="true">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+            </svg>
+            <span>@elvnrpltwo._</span>
+          </a>
+        </p>
+
+        <p class="footer-school">XI RPL 2 — SMK Negeri 13 Bandung</p>
+
+        <p class="footer-copyright">© 2026 Jatukrami</p>
+      </div>
+
+    </div>
   </footer>
 
   <!-- ============ LIGHTBOX OVERLAY (Section 7: Galeri, persist di body) ============ -->

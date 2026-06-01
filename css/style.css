@@ -12,6 +12,8 @@
 @import url('acara.css');      /* Section 5: detail acara + maps */
 @import url('countdown.css');  /* Section 6: countdown timer 3 state */
 @import url('galeri.css');     /* Section 7: galeri foto carousel + lightbox */
-@import url('sections.css');   /* Section 8-9 */
+@import url('ucapan.css');     /* Section 8: form ucapan & doa + list */
+@import url('footer.css');     /* Section 9: footer + share + credit */
+@import url('sections.css');   /* (legacy placeholder) */
 @import url('music-toggle.css'); /* Komponen floating music toggle */
 @import url('responsive.css'); /* WAJIB terakhir — media queries tambahan */
