@@ -32,7 +32,7 @@
   eventStart.setHours(10, 0, 0, 0);
 
   const eventEnd = new Date(weddingDateObj);
-  eventEnd.setHours(14, 0, 0, 0);
+  eventEnd.setHours(11, 0, 0, 0);
 
   if (dateDisplayEl && window.CONFIG.event && window.CONFIG.event.dateDisplay) {
     dateDisplayEl.textContent = window.CONFIG.event.dateDisplay;

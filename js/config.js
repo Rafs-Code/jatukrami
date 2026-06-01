@@ -1,5 +1,5 @@
 const CONFIG = {
-  weddingDate: '2026-08-15T08:00:00',
+  weddingDate: '2026-06-10T08:00:00',
 
   groom: {
     fullName: 'Sachio Fadil Taufik',
@@ -25,8 +25,8 @@ const CONFIG = {
 
   event: {
     name: "Walimatul 'Urs",
-    dateDisplay: 'Saptu, 15 Agustus 2026',
-    time: '10.00 — 14.00 WIB',
+    dateDisplay: 'Rebo, 10 Juni 2026',
+    time: '10.00 — 11.00 WIB',
     venue: 'SMK Negeri 13 Bandung',
     address: 'Jl. Soekarno-Hatta No.10, Jatisari, Kec. Buahbatu, Bandung, Jawa Barat',
     mapsEmbedUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.597993486579!2d107.6544202758355!3d-6.938554693061422!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e8109c2647c7%3A0xe47eec0775b8d648!2sVocational%20High%20School%2013%20Bandung!5e0!3m2!1sen!2sid!4v1780145454635!5m2!1sen!2sid',
