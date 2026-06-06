@@ -1,0 +1,332 @@
+/* ==========================================================
+   SECTION NAVIGATOR RAIL — JATUKRAMI Wave 1 v2 Prompt 1C
+   Vertical rail di kanan + 8 section dots + tooltip + toggle.
+   Replace scroll progress bar lama (top horizontal).
+   ========================================================== */
+
+/* ===== RAIL CONTAINER ===== */
+.section-nav-rail {
+  position: fixed;
+  top: 50%;
+  right: var(--space-3);
+  transform: translateY(-50%);
+  z-index: var(--z-toast);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+  transition:
+    opacity var(--transition-slow),
+    transform var(--transition-slow);
+  opacity: 1;
+}
+
+.section-nav-rail.is-rail-hidden {
+  opacity: 0;
+  transform: translate(120%, -50%);
+  pointer-events: none;
+}
+
+/* Auto-hide saat lightbox galeri open */
+body:has(.galeri-lightbox:not(.is-hidden)) .section-nav-rail {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* ===== PROGRESS TRACK (Vertical Bar) ===== */
+.nav-rail-track {
+  position: relative;
+  width: 2px;
+  height: 55vh;
+  max-height: 480px;
+  min-height: 320px;
+  background-color: rgba(201, 169, 104, 0.4);
+  border-radius: var(--radius-full);
+}
+
+/* Progress fill (animated based on scroll) */
+.nav-rail-progress {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 0%;
+  background: linear-gradient(
+    180deg,
+    var(--color-primary-300) 0%,
+    var(--color-primary-500) 50%,
+    var(--color-primary-700) 100%
+  );
+  border-radius: var(--radius-full);
+  transition: height 150ms ease-out;
+  box-shadow: 0 0 6px rgba(212, 175, 55, 0.4);
+  will-change: height;
+}
+
+/* ===== DOTS CONTAINER (absolutely positioned over track) ===== */
+.nav-rail-dots {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  pointer-events: none;
+}
+
+/* Individual dot */
+.nav-rail-dot {
+  appearance: none;
+  width: 10px;
+  height: 10px;
+  border-radius: var(--radius-full);
+  background: var(--color-bg-page);
+  border: 1.5px solid var(--color-primary-500);
+  cursor: pointer;
+  pointer-events: auto;
+  padding: 0;
+  position: relative;
+  transition:
+    transform 250ms cubic-bezier(0.34, 1.56, 0.64, 1),
+    background var(--transition-base),
+    box-shadow var(--transition-base),
+    border-color var(--transition-base);
+}
+
+.nav-rail-dot:hover {
+  transform: scale(1.4);
+  background: var(--color-primary-300);
+}
+
+.nav-rail-dot:focus-visible {
+  outline: 2px solid var(--color-accent-blue);
+  outline-offset: 4px;
+}
+
+.nav-rail-dot.is-active {
+  width: 14px;
+  height: 14px;
+  background: var(--color-primary-500);
+  border-color: var(--color-primary-700);
+  transform: scale(1.2);
+  box-shadow:
+    0 0 0 4px rgba(212, 175, 55, 0.18),
+    0 0 12px rgba(212, 175, 55, 0.5);
+  animation: dotPulse 2.2s ease-in-out infinite;
+}
+
+@keyframes dotPulse {
+  0%, 100% {
+    box-shadow:
+      0 0 0 4px rgba(212, 175, 55, 0.18),
+      0 0 12px rgba(212, 175, 55, 0.5);
+  }
+  50% {
+    box-shadow:
+      0 0 0 6px rgba(212, 175, 55, 0.1),
+      0 0 16px rgba(212, 175, 55, 0.65);
+  }
+}
+
+/* ===== TOOLTIP ===== */
+.nav-rail-dot::after {
+  content: attr(data-label);
+  position: absolute;
+  right: calc(100% + 12px);
+  top: 50%;
+  transform: translateY(-50%) translateX(8px);
+  background: var(--color-text-primary);
+  color: var(--color-text-inverse);
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-md);
+  font-family: var(--font-body);
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-medium);
+  letter-spacing: var(--ls-wide);
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition:
+    opacity 200ms ease,
+    transform 200ms ease;
+  box-shadow: var(--shadow-md);
+}
+
+.nav-rail-dot::before {
+  content: '';
+  position: absolute;
+  right: calc(100% + 6px);
+  top: 50%;
+  transform: translateY(-50%) translateX(8px);
+  width: 0;
+  height: 0;
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  border-left: 6px solid var(--color-text-primary);
+  opacity: 0;
+  pointer-events: none;
+  transition:
+    opacity 200ms ease,
+    transform 200ms ease;
+}
+
+/* Show tooltip on hover */
+.nav-rail-dot:hover::after,
+.nav-rail-dot:hover::before,
+.nav-rail-dot:focus-visible::after,
+.nav-rail-dot:focus-visible::before {
+  opacity: 1;
+  transform: translateY(-50%) translateX(0);
+}
+
+/* Show tooltip when auto-triggered (via JS) */
+.nav-rail-dot.is-tooltip-auto::after,
+.nav-rail-dot.is-tooltip-auto::before {
+  opacity: 1;
+  transform: translateY(-50%) translateX(0);
+}
+
+/* ===== TOGGLE ARROW BUTTON ===== */
+.nav-rail-toggle {
+  appearance: none;
+  margin-top: var(--space-3);
+  width: 28px;
+  height: 28px;
+  border-radius: var(--radius-full);
+  background: var(--color-bg-page);
+  border: 1.5px solid var(--color-primary-500);
+  color: var(--color-primary-700);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  box-shadow: var(--shadow-sm);
+  transition:
+    transform var(--transition-base),
+    background var(--transition-base),
+    box-shadow var(--transition-base);
+}
+
+.nav-rail-toggle:hover {
+  transform: scale(1.15);
+  background: var(--color-primary-100);
+  box-shadow: var(--shadow-md);
+}
+
+.nav-rail-toggle:focus-visible {
+  outline: 2px solid var(--color-accent-blue);
+  outline-offset: 3px;
+}
+
+.nav-rail-toggle svg {
+  transition: transform var(--transition-base);
+}
+
+/* ===== HIDDEN RAIL — Show Arrow Only ===== */
+.nav-rail-show-btn {
+  position: fixed;
+  top: 50%;
+  right: var(--space-3);
+  transform: translateY(-50%);
+  z-index: var(--z-toast);
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-full);
+  background: var(--color-bg-page);
+  border: 1.5px solid var(--color-primary-500);
+  color: var(--color-primary-700);
+  cursor: pointer;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  box-shadow: var(--shadow-md);
+  opacity: 0;
+  transition:
+    opacity var(--transition-slow),
+    transform var(--transition-base),
+    background var(--transition-base);
+}
+
+.nav-rail-show-btn.is-show-btn-visible {
+  display: flex;
+  opacity: 1;
+}
+
+.nav-rail-show-btn:hover {
+  transform: translateY(-50%) scale(1.15);
+  background: var(--color-primary-100);
+}
+
+.nav-rail-show-btn:focus-visible {
+  outline: 2px solid var(--color-accent-blue);
+  outline-offset: 3px;
+}
+
+/* Hide show-btn saat lightbox open */
+body:has(.galeri-lightbox:not(.is-hidden)) .nav-rail-show-btn {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 767px) {
+  .section-nav-rail {
+    right: var(--space-2);
+  }
+
+  .nav-rail-track {
+    height: 50vh;
+    min-height: 280px;
+  }
+
+  .nav-rail-dot {
+    width: 8px;
+    height: 8px;
+  }
+
+  .nav-rail-dot.is-active {
+    width: 12px;
+    height: 12px;
+  }
+
+  .nav-rail-dot::after {
+    font-size: 10px;
+    padding: var(--space-1) var(--space-2);
+  }
+
+  .nav-rail-toggle {
+    width: 24px;
+    height: 24px;
+    margin-top: var(--space-2);
+  }
+
+  .nav-rail-show-btn {
+    width: 28px;
+    height: 28px;
+    right: var(--space-2);
+  }
+}
+
+@media (min-width: 1024px) {
+  .section-nav-rail {
+    right: var(--space-4);
+  }
+
+  .nav-rail-show-btn {
+    right: var(--space-4);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nav-rail-dot.is-active {
+    animation: none;
+  }
+  .nav-rail-progress {
+    transition: none;
+  }
+}
