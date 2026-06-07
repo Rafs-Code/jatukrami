@@ -79,6 +79,8 @@
   margin: 0;
   line-height: var(--lh-relaxed);
   letter-spacing: var(--ls-normal);
+  text-shadow: 0 0 24px rgba(212, 175, 55, 0.35),
+               0 2px 8px rgba(212, 175, 55, 0.2);
 }
 
 /* Salam */
@@ -90,6 +92,7 @@
   color: var(--color-text-secondary);
   margin: 0;
   letter-spacing: var(--ls-wide);
+  animation: sambutanSalamReveal 1.5s ease-out 0.4s both;
 }
 
 /* Divider with ornament */
@@ -144,6 +147,13 @@
   background: rgba(255, 255, 255, 0.3);
   border-radius: var(--radius-lg);
   border: 1px solid var(--color-border);
+  box-shadow:
+    0 8px 24px rgba(62, 44, 28, 0.12),
+    0 2px 8px rgba(212, 175, 55, 0.15),
+    inset 0 0 0 1px rgba(212, 175, 55, 0.25);
+  background-clip: padding-box;
+  position: relative;
+  animation: sambutanQuranBreathe 5s ease-in-out infinite;
 }
 
 .quran-source {
@@ -230,5 +240,46 @@
   .sambutan-corner {
     width: 120px;
     height: 120px;
+  }
+}
+
+/* ===== KEYFRAMES (Wave 2.3 polish) ===== */
+@keyframes sambutanQuranBreathe {
+  0%, 100% {
+    box-shadow:
+      0 8px 24px rgba(62, 44, 28, 0.12),
+      0 2px 8px rgba(212, 175, 55, 0.15),
+      inset 0 0 0 1px rgba(212, 175, 55, 0.25);
+  }
+  50% {
+    box-shadow:
+      0 10px 32px rgba(62, 44, 28, 0.14),
+      0 4px 16px rgba(212, 175, 55, 0.25),
+      inset 0 0 0 1px rgba(212, 175, 55, 0.35);
+  }
+}
+
+@keyframes sambutanSalamReveal {
+  0% {
+    opacity: 0;
+    letter-spacing: 0.3em;
+    filter: blur(4px);
+  }
+  100% {
+    opacity: 1;
+    letter-spacing: var(--ls-wide);
+    filter: blur(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sambutan-quran {
+    animation: none;
+  }
+  .sambutan-salam {
+    animation: none;
+    opacity: 1;
+    letter-spacing: var(--ls-wide);
+    filter: blur(0);
   }
 }

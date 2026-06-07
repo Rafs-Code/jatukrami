@@ -88,6 +88,9 @@
   height: 1px;
   background: var(--color-primary-300);
   opacity: 0.6;
+  transform: scaleX(0);
+  transform-origin: center;
+  animation: introDividerExpand 1.2s ease-out 0.6s forwards;
 }
 
 .divider-ornament {
@@ -165,6 +168,7 @@
     transform var(--transition-base),
     border-color var(--transition-base),
     background var(--transition-base);
+  animation: introBtnGlow 2.5s ease-in-out infinite;
 }
 
 .intro-scroll-btn:hover {
@@ -181,12 +185,7 @@
 .scroll-btn-icon {
   display: inline-flex;
   align-items: center;
-  animation: scrollBounce 2s ease-in-out infinite;
-}
-
-@keyframes scrollBounce {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(4px); }
+  animation: introArrowBounce 1.5s ease-in-out infinite;
 }
 
 /* Corner decorative ornaments — match nuansa undangan Sunda */
@@ -206,21 +205,25 @@
 .intro-corner-tl {
   top: var(--space-4);
   left: var(--space-4);
+  animation: introOrnamentFadeTL 0.8s ease-out 0.2s both;
 }
 .intro-corner-tr {
   top: var(--space-4);
   right: var(--space-4);
   transform: scaleX(-1);
+  animation: introOrnamentFadeTR 0.8s ease-out 0.4s both;
 }
 .intro-corner-bl {
   bottom: var(--space-4);
   left: var(--space-4);
   transform: scaleY(-1);
+  animation: introOrnamentFadeBL 0.8s ease-out 0.6s both;
 }
 .intro-corner-br {
   bottom: var(--space-4);
   right: var(--space-4);
   transform: scale(-1, -1);
+  animation: introOrnamentFadeBR 0.8s ease-out 0.8s both;
 }
 
 @media (min-width: 768px) {
@@ -271,8 +274,111 @@
   }
 }
 
+/* ===== KEYFRAMES (Wave 2.2 polish) ===== */
+@keyframes introDividerExpand {
+  0% {
+    transform: scaleX(0);
+    opacity: 0;
+  }
+  100% {
+    transform: scaleX(1);
+    opacity: 0.6;
+  }
+}
+
+@keyframes introBtnGlow {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 0 14px rgba(212, 175, 55, 0);
+  }
+}
+
+@keyframes introArrowBounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(4px);
+  }
+}
+
+/* Per-corner fades preserve mirror transform sign */
+@keyframes introOrnamentFadeTL {
+  0% {
+    opacity: 0;
+    transform: scale(0.85);
+  }
+  100% {
+    opacity: 0.55;
+    transform: scale(1);
+  }
+}
+
+@keyframes introOrnamentFadeTR {
+  0% {
+    opacity: 0;
+    transform: scaleX(-0.85) scaleY(0.85);
+  }
+  100% {
+    opacity: 0.55;
+    transform: scaleX(-1) scaleY(1);
+  }
+}
+
+@keyframes introOrnamentFadeBL {
+  0% {
+    opacity: 0;
+    transform: scaleX(0.85) scaleY(-0.85);
+  }
+  100% {
+    opacity: 0.55;
+    transform: scaleX(1) scaleY(-1);
+  }
+}
+
+@keyframes introOrnamentFadeBR {
+  0% {
+    opacity: 0;
+    transform: scale(-0.85);
+  }
+  100% {
+    opacity: 0.55;
+    transform: scale(-1);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
+  .divider-line {
+    animation: none;
+    transform: scaleX(1);
+    opacity: 0.6;
+  }
+  .intro-scroll-btn {
+    animation: none;
+  }
   .scroll-btn-icon {
     animation: none;
+  }
+  .intro-corner-tl {
+    animation: none;
+    opacity: 0.55;
+    transform: scale(1);
+  }
+  .intro-corner-tr {
+    animation: none;
+    opacity: 0.55;
+    transform: scaleX(-1);
+  }
+  .intro-corner-bl {
+    animation: none;
+    opacity: 0.55;
+    transform: scaleY(-1);
+  }
+  .intro-corner-br {
+    animation: none;
+    opacity: 0.55;
+    transform: scale(-1, -1);
   }
 }
