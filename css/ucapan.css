@@ -105,6 +105,12 @@
   border-radius: var(--radius-lg);
   padding: var(--space-6) var(--space-5);
   box-shadow: var(--shadow-md);
+  box-shadow:
+    0 8px 24px rgba(62, 44, 28, 0.12),
+    0 2px 8px rgba(212, 175, 55, 0.15),
+    inset 0 0 0 1px rgba(212, 175, 55, 0.25);
+  background-clip: padding-box;
+  position: relative;
 }
 
 @media (min-width: 768px) {
@@ -165,7 +171,9 @@
   outline: none;
   border-color: var(--color-primary-500);
   background: var(--color-bg-page);
-  box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.15);
+  box-shadow:
+    0 0 0 3px rgba(212, 175, 55, 0.15),
+    0 0 12px rgba(212, 175, 55, 0.2);
 }
 
 .form-input.has-error,
@@ -278,6 +286,7 @@
     background var(--transition-base),
     box-shadow var(--transition-base),
     opacity var(--transition-base);
+  animation: ucapanSubmitGlow 2.5s ease-in-out infinite;
 }
 
 .form-submit:hover:not(:disabled) {
@@ -400,11 +409,24 @@
   transition:
     border-color var(--transition-base),
     box-shadow var(--transition-base);
+  background: var(--color-bg-surface);
+  border-left: 3px solid var(--color-primary-500);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  box-shadow:
+    0 2px 8px rgba(62, 44, 28, 0.06),
+    inset 0 0 0 1px rgba(212, 175, 55, 0.12);
+  transition:
+    transform var(--transition-base),
+    box-shadow var(--transition-base),
+    border-left-color var(--transition-base);
 }
 
 .ucapan-item:hover {
-  border-color: var(--color-primary-300);
-  box-shadow: var(--shadow-sm);
+  transform: translateX(4px);
+  box-shadow:
+    0 4px 12px rgba(62, 44, 28, 0.1),
+    inset 0 0 0 1px rgba(212, 175, 55, 0.2);
+  border-left-color: var(--color-primary-300);
 }
 
 .ucapan-item-header {
@@ -455,16 +477,52 @@
 }
 
 .ucapan-empty {
-  padding: var(--space-6);
+  padding: var(--space-6) var(--space-4);
   text-align: center;
-  color: var(--color-text-tertiary);
+  color: var(--color-primary-700);
   font-style: italic;
-  font-family: var(--font-body);
+  font-family: var(--font-heading);
+  font-size: var(--fs-lg);
+  position: relative;
+}
+
+.ucapan-empty::before {
+  content: '\2709';
+  display: block;
+  font-size: 2.5em;
+  margin-bottom: var(--space-3);
+  color: var(--color-primary-500);
+  opacity: 0.7;
 }
 
 /* RESPONSIVE */
 @media (min-width: 768px) {
   .ucapan-list {
     max-height: 520px;
+  }
+}
+
+/* ===== KEYFRAMES (Wave 2.8 polish) ===== */
+@keyframes ucapanSubmitGlow {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 0 14px rgba(212, 175, 55, 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .form-submit {
+    animation: none;
+  }
+  .ucapan-item,
+  .ucapan-item:hover {
+    transition: none;
+    transform: none;
+  }
+  .form-input,
+  .form-textarea {
+    transition: none;
   }
 }

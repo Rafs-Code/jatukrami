@@ -92,13 +92,74 @@
   background: var(--color-bg-elevated);
   cursor: pointer;
   box-shadow: var(--shadow-lg);
-  border: 1px solid var(--color-border);
+  border: 1px solid var(--color-border-strong);
   transition: transform var(--transition-base), box-shadow var(--transition-base);
+  box-shadow:
+    0 4px 12px rgba(62, 44, 28, 0.1),
+    inset 0 0 0 4px var(--color-bg-page);
+  background: var(--color-bg-page);
+  padding: 4px;
 }
 
 .galeri-hero:hover {
   transform: translateY(-3px);
-  box-shadow: var(--shadow-xl);
+  box-shadow:
+    0 8px 20px rgba(62, 44, 28, 0.18),
+    inset 0 0 0 4px var(--color-bg-page);
+}
+
+/* L-shape corner clip — top-left (Wave 2.7 polish) */
+.galeri-hero::before {
+  content: '';
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  width: 16px;
+  height: 16px;
+  border-top: 2px solid var(--color-primary-500);
+  border-left: 2px solid var(--color-primary-500);
+  z-index: 3;
+  pointer-events: none;
+  opacity: 0.85;
+  transition:
+    width var(--transition-base),
+    height var(--transition-base),
+    opacity var(--transition-base);
+}
+
+.galeri-hero:hover::before {
+  width: 22px;
+  height: 22px;
+  opacity: 1;
+}
+
+/* Overlay reveal with "+" hint icon (Wave 2.7 polish) */
+.galeri-hero::after {
+  content: '+';
+  position: absolute;
+  inset: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-heading);
+  font-size: 2.5em;
+  font-weight: var(--fw-regular);
+  color: var(--color-bg-page);
+  background: linear-gradient(
+    180deg,
+    rgba(62, 44, 28, 0) 40%,
+    rgba(62, 44, 28, 0.6) 100%
+  );
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--transition-base);
+  z-index: 2;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+  border-radius: var(--radius-md);
+}
+
+.galeri-hero:hover::after {
+  opacity: 1;
 }
 
 .galeri-hero:focus-visible {
@@ -114,12 +175,16 @@
   object-fit: contain;
   background: var(--color-bg-elevated);
   opacity: 0;
-  transition: opacity 600ms ease-in-out;
+  transition: opacity 600ms ease-in-out, transform var(--transition-slow);
 }
 
 .galeri-hero img.is-active {
   opacity: 1;
   z-index: 2;
+}
+
+.galeri-hero:hover img.is-active {
+  transform: scale(1.05);
 }
 
 /* INDICATOR DOTS */
@@ -303,6 +368,8 @@
   opacity: 1;
   transition: opacity var(--transition-slow), visibility 0s linear 0s;
   cursor: zoom-out;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 }
 
 .galeri-lightbox.is-hidden {
@@ -320,11 +387,11 @@
   width: 44px;
   height: 44px;
   border-radius: var(--radius-full);
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(212, 175, 55, 0.15);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
-  border: 1.5px solid rgba(255, 255, 255, 0.3);
-  color: #fff;
+  border: 1.5px solid var(--color-primary-500);
+  color: var(--color-primary-100);
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -333,12 +400,16 @@
   z-index: 2;
   transition:
     transform var(--transition-base),
-    background var(--transition-base);
+    background var(--transition-base),
+    color var(--transition-base),
+    box-shadow var(--transition-base);
 }
 
 .lightbox-close:hover {
   transform: scale(1.1);
-  background: rgba(255, 255, 255, 0.2);
+  background: var(--color-primary-500);
+  color: var(--color-text-primary);
+  box-shadow: 0 0 16px rgba(212, 175, 55, 0.5);
 }
 
 .lightbox-close:focus-visible {
@@ -361,7 +432,9 @@
   max-height: 90vh;
   object-fit: contain;
   border-radius: var(--radius-md);
-  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.5);
+  box-shadow:
+    0 16px 48px rgba(0, 0, 0, 0.4),
+    0 0 0 1px rgba(212, 175, 55, 0.3);
 }
 
 /* RESPONSIVE */
@@ -391,5 +464,24 @@
 @media (prefers-reduced-motion: reduce) {
   .galeri-hero img {
     transition: none;
+  }
+  .galeri-hero,
+  .galeri-hero:hover {
+    transition: none;
+    transform: none;
+  }
+  .galeri-hero:hover img.is-active {
+    transform: none;
+  }
+  .galeri-hero::before,
+  .galeri-hero:hover::before,
+  .galeri-hero::after,
+  .galeri-hero:hover::after {
+    transition: none;
+  }
+  .lightbox-close,
+  .lightbox-close:hover {
+    transition: none;
+    transform: none;
   }
 }
