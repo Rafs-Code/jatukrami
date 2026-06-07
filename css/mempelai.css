@@ -119,6 +119,46 @@
   box-shadow: var(--shadow-xl);
 }
 
+/* L-shape corner deco (Wave 2.4 polish) */
+.mempelai-card::before,
+.mempelai-card::after {
+  content: '';
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  border: 1.5px solid var(--color-primary-500);
+  pointer-events: none;
+  opacity: 0.85;
+  z-index: 5;
+  transition:
+    width var(--transition-base),
+    height var(--transition-base),
+    border-color var(--transition-base);
+}
+
+.mempelai-card::before {
+  top: 10px;
+  left: 10px;
+  border-right: none;
+  border-bottom: none;
+  border-radius: var(--radius-sm) 0 0 0;
+}
+
+.mempelai-card::after {
+  bottom: 10px;
+  right: 10px;
+  border-left: none;
+  border-top: none;
+  border-radius: 0 0 var(--radius-sm) 0;
+}
+
+.mempelai-card:hover::before,
+.mempelai-card:hover::after {
+  width: 32px;
+  height: 32px;
+  border-color: var(--color-primary-300);
+}
+
 .card-photo {
   position: absolute;
   inset: 0;
@@ -139,6 +179,29 @@
     rgba(62, 44, 28, 0.7) 70%,
     rgba(62, 44, 28, 0.92) 100%
   );
+  overflow: hidden;
+}
+
+/* Hover shimmer sweep (Wave 2.4 polish) */
+.mempelai-card .card-overlay::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(
+    115deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.18) 50%,
+    transparent 70%
+  );
+  pointer-events: none;
+  transition: left 0.7s ease-out;
+}
+
+.mempelai-card:hover .card-overlay::after {
+  left: 130%;
 }
 
 .card-content {
@@ -162,6 +225,21 @@
   margin: 0;
   color: var(--color-primary-300);
   text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
+}
+
+.card-sunda-name::after {
+  content: '';
+  display: block;
+  width: 60%;
+  max-width: 140px;
+  height: 1px;
+  margin: var(--space-2) auto 0;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--color-primary-500) 50%,
+    transparent 100%
+  );
 }
 
 .card-latin-name {
@@ -259,6 +337,15 @@
   outline-offset: 4px;
 }
 
+/* IG icon pulse on hover (Wave 2.4 polish) */
+.card-instagram svg {
+  transition: transform var(--transition-base);
+}
+
+.card-instagram:hover svg {
+  animation: mempelaiIgPulse 0.8s ease-in-out;
+}
+
 /* ============ AMPERSAND DIVIDER ============ */
 .mempelai-divider {
   display: flex;
@@ -285,6 +372,12 @@
   font-weight: var(--fw-regular);
   color: var(--color-primary-500);
   line-height: 1;
+  font-size: 3em;
+  text-shadow:
+    0 0 20px rgba(212, 175, 55, 0.45),
+    0 2px 6px rgba(212, 175, 55, 0.3);
+  display: inline-block;
+  animation: mempelaiAmpReveal 1.2s ease-out 0.5s both;
 }
 
 /* ============ RESPONSIVE: TABLET ============ */
@@ -325,5 +418,52 @@
 @media (min-width: 1280px) {
   .mempelai-card {
     max-width: 420px;
+  }
+}
+
+/* ===== KEYFRAMES (Wave 2.4 polish) ===== */
+@keyframes mempelaiAmpReveal {
+  0% {
+    opacity: 0;
+    transform: scale(0.3) rotate(-15deg);
+  }
+  60% {
+    opacity: 1;
+    transform: scale(1.15) rotate(5deg);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+@keyframes mempelaiIgPulse {
+  0%, 100% {
+    transform: scale(1);
+    filter: drop-shadow(0 0 0 rgba(212, 175, 55, 0));
+  }
+  50% {
+    transform: scale(1.2);
+    filter: drop-shadow(0 0 6px rgba(212, 175, 55, 0.6));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .divider-amp {
+    animation: none;
+    opacity: 1;
+    transform: scale(1);
+  }
+  .card-instagram:hover svg {
+    animation: none;
+  }
+  .mempelai-card .card-overlay::after,
+  .mempelai-card:hover .card-overlay::after {
+    transition: none;
+    left: -100%;
+  }
+  .mempelai-card:hover::before,
+  .mempelai-card:hover::after {
+    transition: none;
   }
 }
