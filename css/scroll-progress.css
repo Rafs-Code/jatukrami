@@ -80,8 +80,8 @@ body:has(.galeri-lightbox:not(.is-hidden)) .section-nav-rail {
 /* Individual dot */
 .nav-rail-dot {
   appearance: none;
-  width: 10px;
-  height: 10px;
+  width: 5px;
+  height: 5px;
   border-radius: var(--radius-full);
   background: var(--color-bg-page);
   border: 1.5px solid var(--color-primary-500);
@@ -107,8 +107,8 @@ body:has(.galeri-lightbox:not(.is-hidden)) .section-nav-rail {
 }
 
 .nav-rail-dot.is-active {
-  width: 14px;
-  height: 14px;
+  width: 8px;
+  height: 8px;
   background: var(--color-primary-500);
   border-color: var(--color-primary-700);
   transform: scale(1.2);
@@ -116,6 +116,11 @@ body:has(.galeri-lightbox:not(.is-hidden)) .section-nav-rail {
     0 0 0 4px rgba(212, 175, 55, 0.18),
     0 0 12px rgba(212, 175, 55, 0.5);
   animation: dotPulse 2.2s ease-in-out infinite;
+}
+
+.nav-rail-dot.is-active:hover,
+.nav-rail-dot:hover.is-active {
+  transform: scale(1.4);
 }
 
 @keyframes dotPulse {
@@ -285,13 +290,13 @@ body:has(.galeri-lightbox:not(.is-hidden)) .nav-rail-show-btn {
   }
 
   .nav-rail-dot {
-    width: 8px;
-    height: 8px;
+    width: 4px;
+    height: 4px;
   }
 
   .nav-rail-dot.is-active {
-    width: 12px;
-    height: 12px;
+    width: 6px;
+    height: 6px;
   }
 
   .nav-rail-dot::after {
