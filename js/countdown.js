@@ -42,6 +42,16 @@
     return n < 10 ? '0' + n : '' + n;
   }
 
+  function setValueWithTick(el, newValue) {
+    if (!el) return;
+    const str = String(newValue);
+    if (el.textContent === str) return;
+    el.classList.remove('is-ticking');
+    void el.offsetWidth;
+    el.classList.add('is-ticking');
+    el.textContent = str;
+  }
+
   function showState(stateName) {
     beforeEl.classList.add('is-hidden');
     ongoingEl.classList.add('is-hidden');
@@ -76,10 +86,10 @@
     const diff = eventStart.getTime() - now.getTime();
 
     if (diff <= 0) {
-      if (daysEl) daysEl.textContent = '00';
-      if (hoursEl) hoursEl.textContent = '00';
-      if (minutesEl) minutesEl.textContent = '00';
-      if (secondsEl) secondsEl.textContent = '00';
+      setValueWithTick(daysEl, '00');
+      setValueWithTick(hoursEl, '00');
+      setValueWithTick(minutesEl, '00');
+      setValueWithTick(secondsEl, '00');
       return;
     }
 
@@ -88,10 +98,10 @@
     const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
     const seconds = Math.floor((diff % (1000 * 60)) / 1000);
 
-    if (daysEl) daysEl.textContent = pad2(days);
-    if (hoursEl) hoursEl.textContent = pad2(hours);
-    if (minutesEl) minutesEl.textContent = pad2(minutes);
-    if (secondsEl) secondsEl.textContent = pad2(seconds);
+    setValueWithTick(daysEl, pad2(days));
+    setValueWithTick(hoursEl, pad2(hours));
+    setValueWithTick(minutesEl, pad2(minutes));
+    setValueWithTick(secondsEl, pad2(seconds));
   }
 
   updateCountdown();

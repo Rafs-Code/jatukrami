@@ -149,11 +149,46 @@
   box-shadow: var(--shadow-md);
   min-height: 100px;
   transition: transform var(--transition-base), box-shadow var(--transition-base);
+  box-shadow:
+    0 8px 24px rgba(62, 44, 28, 0.12),
+    0 2px 8px rgba(212, 175, 55, 0.15),
+    inset 0 0 0 1px rgba(212, 175, 55, 0.25);
+  background-clip: padding-box;
+  position: relative;
 }
 
 .countdown-box:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-lg);
+  transform: translateY(-3px);
+  box-shadow:
+    0 12px 32px rgba(62, 44, 28, 0.16),
+    0 4px 16px rgba(212, 175, 55, 0.22),
+    inset 0 0 0 1px rgba(212, 175, 55, 0.35);
+}
+
+/* Colon ":" divider between boxes (Wave 2.6 polish) */
+.countdown-box::after {
+  content: ':';
+  position: absolute;
+  top: 50%;
+  right: calc(var(--space-3) * -0.5);
+  transform: translate(50%, -50%);
+  font-family: var(--font-heading);
+  font-size: 2em;
+  font-weight: var(--fw-bold);
+  font-style: italic;
+  color: var(--color-primary-500);
+  line-height: 1;
+  pointer-events: none;
+  animation: countdownColonBlink 1s ease-in-out infinite;
+}
+
+.countdown-box:last-child::after {
+  display: none;
+}
+
+/* Tick animation when value changes */
+.countdown-num.is-ticking {
+  animation: countdownTick 0.3s ease-out;
 }
 
 .countdown-num {
@@ -164,6 +199,24 @@
   color: var(--color-primary-700);
   line-height: 1;
   font-variant-numeric: tabular-nums;
+  background-image: linear-gradient(
+    180deg,
+    var(--color-primary-900) 0%,
+    var(--color-primary-700) 30%,
+    var(--color-primary-500) 70%,
+    var(--color-primary-300) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  filter: drop-shadow(0 1px 2px rgba(184, 134, 11, 0.2));
+}
+
+@supports not ((background-clip: text) or (-webkit-background-clip: text)) {
+  .countdown-num {
+    color: var(--color-primary-700);
+  }
 }
 
 .countdown-label {
@@ -259,10 +312,50 @@
   }
 }
 
+/* ===== KEYFRAMES (Wave 2.6 polish) ===== */
+@keyframes countdownTick {
+  0% {
+    transform: scaleY(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scaleY(0.7);
+    opacity: 0.6;
+  }
+  100% {
+    transform: scaleY(1);
+    opacity: 1;
+  }
+}
+
+@keyframes countdownColonBlink {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 1; }
+}
+
+/* Hide colon on mobile (boxes spacing tight) */
+@media (max-width: 767px) {
+  .countdown-box::after {
+    display: none;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .celebration-ornament,
   .ended-ornament,
   .countdown-boxes-pulse .countdown-box {
     animation: none;
+  }
+  .countdown-box,
+  .countdown-box:hover {
+    transition: none;
+    transform: none;
+  }
+  .countdown-num.is-ticking {
+    animation: none;
+  }
+  .countdown-box::after {
+    animation: none;
+    opacity: 0.7;
   }
 }
