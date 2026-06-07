@@ -71,6 +71,21 @@
   color: var(--color-primary-700);
   margin: 0;
   line-height: var(--lh-tight);
+  position: relative;
+}
+
+.footer-greeting::before {
+  content: '';
+  display: block;
+  width: 200px;
+  max-width: 80%;
+  height: 24px;
+  margin: 0 auto var(--space-4);
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 24' fill='none' stroke='%23D4AF37' stroke-width='1.2'><circle cx='100' cy='12' r='5' fill='none'/><circle cx='100' cy='12' r='2' fill='%23D4AF37'/><line x1='30' y1='12' x2='90' y2='12'/><line x1='110' y1='12' x2='170' y2='12'/><circle cx='25' cy='12' r='3' fill='%23D4AF37' opacity='0.7'/><circle cx='175' cy='12' r='3' fill='%23D4AF37' opacity='0.7'/><circle cx='15' cy='12' r='1.5' fill='%23D4AF37' opacity='0.5'/><circle cx='185' cy='12' r='1.5' fill='%23D4AF37' opacity='0.5'/></svg>");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  opacity: 0.85;
 }
 
 .footer-greeting-sub {
@@ -101,6 +116,13 @@
   margin: var(--space-3) 0 0;
   line-height: var(--lh-relaxed);
   max-width: 480px;
+  font-family: var(--font-heading);
+  color: var(--color-text-secondary);
+  letter-spacing: var(--ls-wide);
+  text-align: center;
+  max-width: 36em;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* ===== SHARE SECTION ===== */
@@ -148,7 +170,9 @@
   transform: translateY(-3px);
   background: var(--color-primary-500);
   color: var(--color-text-inverse);
-  box-shadow: var(--shadow-lg);
+  box-shadow:
+    0 4px 12px rgba(62, 44, 28, 0.15),
+    0 0 16px rgba(212, 175, 55, 0.4);
 }
 
 .footer-share-btn:focus-visible {
@@ -285,6 +309,13 @@
   margin: var(--space-2) 0 0;
   letter-spacing: var(--ls-wide);
   font-variant-numeric: tabular-nums;
+  text-align: center;
+  margin-top: var(--space-6);
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--color-border);
+  width: 100%;
+  max-width: 320px;
+  align-self: center;
 }
 
 /* ===== RESPONSIVE ===== */
@@ -301,5 +332,10 @@
 @media (prefers-reduced-motion: reduce) {
   .footer-ornament-top {
     animation: none;
+  }
+  .footer-share-btn,
+  .footer-share-btn:hover {
+    transition: none;
+    transform: none;
   }
 }
