@@ -1,0 +1,40 @@
+/* ==========================================================
+   HEADING GRADIENT — JATUKRAMI Wave 1 v2 Prompt 1D (FIXED)
+   Boosted specificity + lebih kontras gradient untuk visibility maksimal.
+   ========================================================== */
+
+/* Fallback: solid gold dulu */
+.has-gradient-heading {
+  color: var(--color-primary-700);
+}
+
+/* GRADIENT — Pakai double class selector untuk specificity higher */
+@supports ((background-clip: text) or (-webkit-background-clip: text)) {
+  .has-gradient-heading.has-gradient-heading {
+    background-image: linear-gradient(
+      180deg,
+      var(--color-primary-900) 0%,
+      var(--color-primary-700) 30%,
+      var(--color-primary-500) 70%,
+      var(--color-primary-300) 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    /* Subtle text shadow untuk depth (gak butuh kalau gradient cukup terang) */
+    filter: drop-shadow(0 1px 1px rgba(184, 134, 11, 0.15));
+  }
+}
+
+/* Footer-greeting special: dark→light→dark (embossed feel) */
+@supports ((background-clip: text) or (-webkit-background-clip: text)) {
+  .has-gradient-heading.has-gradient-heading.footer-greeting {
+    background-image: linear-gradient(
+      180deg,
+      var(--color-primary-900) 0%,
+      var(--color-primary-500) 50%,
+      var(--color-primary-900) 100%
+    );
+  }
+}
