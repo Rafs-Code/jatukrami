@@ -13,6 +13,7 @@
 @import url('countdown.css');  /* Section 6: countdown timer 3 state */
 @import url('galeri.css');     /* Section 7: galeri foto carousel + lightbox */
 @import url('ucapan.css');     /* Section 8: form ucapan & doa + list */
+@import url('poster-cta.css');  /* Section Bonus: Poster Digital CTA */
 @import url('footer.css');     /* Section 9: footer + share + credit */
 @import url('sections.css');   /* (legacy placeholder) */
 @import url('music-toggle.css'); /* Komponen floating music toggle */
